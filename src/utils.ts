@@ -13,3 +13,25 @@ export function classNames(classes: {[key: string]: boolean}) {
     .map(([key, value]) => key)
     .join(' ');
 }
+
+export function debounce (fn: Function, delay: number): (...args: any) => void {
+  let timer: any
+  return function bundle (...args: any) {
+    const context = this
+    clearTimeout(timer)
+    timer = setTimeout(fn.bind(context, ...args), delay)
+  }
+}
+
+export function throttle (fn: Function, delay: number): (...args: any) => void {
+  let previous: number = null
+  return function bundle (...args: any) {
+    const context = this
+    const now = Date.now()
+
+    if (now - previous > delay) {
+      fn.apply(context, args)
+      previous = now
+    }
+  }
+}
