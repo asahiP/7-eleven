@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import fake_avatar from '@public/img/fake_avatar.jpg'
+import { classNames } from '@/utils'
 
 import Welcome from './Welcome'
 import Search from '@/components/Search'
 
+import fake_avatar from '@public/img/fake_avatar.jpg'
 
-function ConnectedSticky ({ userInfo }: any): JSX.Element {
+function ConnectedSticky ({ userInfo, scrollTop }: any): JSX.Element {
   const { name, avatar } = userInfo
+  const [wapperClassName, setWapperClassName] = useState('sticky__wapper')
+  const wapper = useRef(null)
+  const wapperHeight = useRef(0)
+
+  useEffect(() => { wapperHeight.current = wapper.current.offsetHeight }, [])
+  useEffect(() => {
+    setWapperClassName(
+      classNames({
+        'sticky__wapper': true,
+        'sticky__wapper--is-sticky': scrollTop > wapperHeight.current
+      })
+    )
+  }, [scrollTop])
+
   return (
-    <div className="sticky__wapper">
+    <div className={wapperClassName} ref={wapper}>
       <Link className="sticky__user-icon" to="/">
         {/* <img src={avatar} alt="user icon" width="50"/> */}
         <img src={fake_avatar} alt="user icon" width="50"/>

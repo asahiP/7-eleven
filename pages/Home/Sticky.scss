@@ -18,6 +18,17 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
     overflow: hidden;
 
     background: white;
+
+    transition: height .2s ease-out;
+
+    &--is-sticky {
+      height: $wapper-height - $icon-size - $offset;
+      
+      & .sticky__user-icon {
+        transform: translate3d(0, -10px, 0);
+        opacity: 0;
+      }
+    }
   }
   &__user {
     &-icon {
@@ -33,6 +44,8 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
   
       /** 图片加载占位填充 */
       background-color: gray;
+
+      transition: transform .2s ease-out, opacity .2s ease-out;
     }
     &-info {
       position: absolute;

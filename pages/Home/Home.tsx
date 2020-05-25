@@ -5,7 +5,7 @@ import Sticky from './Sticky'
 export default function Home (): JSX.Element {
   return (
     <>
-      <Sticky/>
+      <Sticky scrollTop={170}/>
     </>
   )
 }
