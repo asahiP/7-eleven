@@ -19,10 +19,10 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
 
     background: white;
 
-    transition: height .2s ease-out;
+    transition: transform .2s ease-out;
 
     &--is-sticky {
-      height: $wapper-height - $icon-size - $offset;
+      transform: translate3d(0, 0 - $icon-size - $offset, 0);
 
       & .sticky__user-icon {
         transform: translate3d(0, -20px, 0);
@@ -72,10 +72,5 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
         content: ">";
       }
     }
-  }
-  &__search {
-    position: absolute;
-    top: $offset + 7;
-    right: $offset;
   }
 }
