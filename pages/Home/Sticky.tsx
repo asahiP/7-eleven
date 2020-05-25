@@ -17,10 +17,10 @@ function ConnectedSticky ({ userInfo, scrollTop }: any): JSX.Element {
   useEffect(() => { wapperHeight.current = wapper.current.offsetHeight }, [])
   useEffect(() => {
     setWapperClassName(
-      classNames({
-        'sticky__wapper': true,
-        'sticky__wapper--is-sticky': scrollTop > wapperHeight.current
-      })
+      classNames(
+        'sticky__wapper',
+        { 'sticky__wapper--is-sticky': scrollTop > wapperHeight.current }
+      )
     )
   }, [scrollTop])
 
