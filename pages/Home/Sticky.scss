@@ -10,7 +10,7 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
 
 .sticky {
   &__wapper {
-    position: absolute;
+    position: fixed;
 
     width: 100%;
     height: $wapper-height;
@@ -23,9 +23,9 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
 
     &--is-sticky {
       height: $wapper-height - $icon-size - $offset;
-      
+
       & .sticky__user-icon {
-        transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -20px, 0);
         opacity: 0;
       }
     }
@@ -45,7 +45,7 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
       /** 图片加载占位填充 */
       background-color: gray;
 
-      transition: transform .2s ease-out, opacity .2s ease-out;
+      transition: transform .2s ease-out, opacity .15s ease-out;
     }
     &-info {
       position: absolute;
