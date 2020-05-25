@@ -1,0 +1,68 @@
+@import '~@/variables.scss';
+
+$wapper-height: 160px;
+$offset: 24px;
+$icon-size: 50px;
+$info-size: 28px;
+$location-size: 18px;
+$location-offset-bottom: 10px;
+$info-offset-bottom: $location-size + $location-offset-bottom + 12px;
+
+.sticky {
+  &__wapper {
+    position: absolute;
+
+    width: 100%;
+    height: $wapper-height;
+
+    overflow: hidden;
+
+    background: white;
+  }
+  &__user {
+    &-icon {
+      position: absolute;
+      top: $offset;
+      left: $offset;
+  
+      width: $icon-size;
+      height: $icon-size;
+      overflow: hidden;
+  
+      border-radius: 50%;
+  
+      /** 图片加载占位填充 */
+      background-color: gray;
+    }
+    &-info {
+      position: absolute;
+      bottom: $info-offset-bottom;
+      left: $offset;
+
+      font-size: $info-size;
+      line-height: 1;
+      font-weight: 800;
+      color: $font-color-main;
+    }
+    &-location {
+      position: absolute;
+      left: $offset;
+      bottom: $location-offset-bottom;
+
+      font-size: $location-size;
+      line-height: 1;
+      color: $font-color-sub;
+
+      &::after {
+        display: inline-block;
+        transform: translate3d(3px, 0, 0);
+        content: ">";
+      }
+    }
+  }
+  &__search {
+    position: absolute;
+    top: $offset + 7;
+    right: $offset;
+  }
+}

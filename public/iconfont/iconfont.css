@@ -6,35 +6,3 @@
   url('iconfont.ttf?t=1590389163591') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
   url('iconfont.svg?t=1590389163591#iconfont') format('svg'); /* iOS 4.1- */
 }
-
-.common__icon {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.common__icon--cart:before {
-  content: "\e61b";
-}
-
-.common__icon--scan:before {
-  content: "\e620";
-}
-
-.common__icon--search:before {
-  content: "\e601";
-}
-
-.common__icon--time:before {
-  content: "\e619";
-}
-
-.common__icon--heating:before {
-  content: "\e621";
-}
-
-.common__icon--lightning:before {
-  content: "\e87a";
-}
