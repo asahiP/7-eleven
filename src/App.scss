@@ -1,1 +1,42 @@
 @import '~@public/iconfont/iconfont.css';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'DIN Alternate Regular', 'PingFang SC';
+}
+
+.common__icon {
+  font-family: "iconfont" !important;
+  font-size: 1em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.common__icon--cart:before {
+  content: "\e61b";
+}
+
+.common__icon--scan:before {
+  content: "\e620";
+}
+
+.common__icon--search:before {
+  content: "\e601";
+}
+
+.common__icon--time:before {
+  content: "\e619";
+}
+
+.common__icon--heating:before {
+  content: "\e621";
+}
+
+.common__icon--lightning:before {
+  content: "\e87a";
+}
