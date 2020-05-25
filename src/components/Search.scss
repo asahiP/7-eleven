@@ -8,12 +8,12 @@ $input-size: 180px;
   &-wapper {
     position: absolute;
 
-    width: $icon-size;
-    height: $icon-size;
+    width: $icon-size + 2;
+    height: $icon-size + 2;
     overflow: hidden;
 
     font-size: $icon-size;
-    line-height: 1;
+    line-height: $icon-size + 2;
     color: $font-color-main;
 
     background: white;

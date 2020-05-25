@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { classNames } from '@/utils'
 
 import Welcome from './Welcome'
-import Search from '@/components/Search'
 
 import fake_avatar from '@public/img/fake_avatar.jpg'
 
@@ -32,7 +31,6 @@ function ConnectedSticky ({ userInfo, scrollTop }: any): JSX.Element {
       </Link>
       <Welcome name={name}/>
       <span className="sticky__user-location">{ userInfo.location }</span>
-      <Search className="sticky__search" onSubmit={(e: any, t: any) => console.log(t)}/>
     </div>
   )
 }

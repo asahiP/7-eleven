@@ -3,6 +3,8 @@ import './Home.scss'
 import Sticky from './Sticky'
 import { throttle } from '@/utils'
 
+import Search from '@/components/Search'
+
 export default function Home (): JSX.Element {
   const [scrollTop, setScrollTop] = useState(0)
   useEffect(() => {
@@ -15,6 +17,7 @@ export default function Home (): JSX.Element {
   return (
     <>
       <Sticky scrollTop={scrollTop}/>
+      <Search className="home__search" onSubmit={(e: any, t: any) => console.log(t)} style={{ position: 'fixed' }}/>
       <div style={{ height: '1800px' }}></div>
     </>
   )

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import './Search.scss'
 import { classNames, useModel } from '@/utils'
 
-export default function Search ({ className, onSubmit: handleSubmit, placeholder }: any): JSX.Element {
+export default function Search ({ className, onSubmit: handleSubmit, placeholder, style }: any): JSX.Element {
   const [isFocus, setIsFocus] = useState(false)
   const assignedClassName = classNames(
     'common__search-wapper',
@@ -23,7 +23,7 @@ export default function Search ({ className, onSubmit: handleSubmit, placeholder
   }
 
   return (
-    <label className={assignedClassName} onClick={handleClick}>
+    <label className={assignedClassName} onClick={handleClick} style={style}>
       <form onSubmit={bundleSubmit}>
         <input
           ref={input}
