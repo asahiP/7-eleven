@@ -4,15 +4,11 @@ import { classNames, useModel } from '@/utils'
 
 export default function Search ({ className, onSubmit: handleSubmit, placeholder }: any): JSX.Element {
   const [isFocus, setIsFocus] = useState(false)
-  const assignedClassName = classNames(Object.assign(
-    {
-      'common__search-wapper': true,
-      'common__search-wapper--is-focus': isFocus
-    },
-    typeof className === 'string'
-      ? { [className]: true }
-      : className
-  ))
+  const assignedClassName = classNames(
+    'common__search-wapper',
+    { 'common__search-wapper--is-focus': isFocus },
+    className
+  )
   
   const input = useRef(null)
   const [keyWord, syncKeyword, setKeyword] = useModel()

@@ -7,11 +7,20 @@ export function useModel (initialValue = ''): [string, (e: any) => void, (e: str
   return [val, bundle, setVal]
 }
 
-export function classNames(classes: {[key: string]: boolean}) {
-  return Object.entries(classes)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key)
-    .join(' ');
+export function classNames(...classes: any): string {
+  return [...new Set(
+    classes
+      .flat(Infinity)
+      .filter((item: any) => item)
+      .map((item: any) => (
+        typeof item === 'object'
+          ? Object.entries(item)
+            .filter(([key, val]) => val)
+            .map(([key, val]) => key)
+          : item
+      ))
+      .flat(Infinity)
+  )].join(' ')
 }
 
 export function debounce (fn: Function, delay: number): (...args: any) => void {
