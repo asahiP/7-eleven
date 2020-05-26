@@ -27,6 +27,10 @@ $tapbar__icon-size: $icon-size-main + 8;
     & li {
       list-style: none;
 
+      &:nth-child(2) {
+        margin: 0 50px;
+      }
+
       & a {
         text-decoration: none;
       }
@@ -52,7 +56,6 @@ $tapbar__icon-size: $icon-size-main + 8;
     width: $tapbar__scan-width;
     height: $tapbar__scan-height;
 
-    margin: 0 50px;
     padding: 15px 20px;
 
     border-radius: $tapbar__scan-height;

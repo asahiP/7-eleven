@@ -19,7 +19,9 @@ export default function Home (): JSX.Element {
     <>
       <Sticky scrollTop={scrollTop}/>
       <Link to="/" className="home__search-wapper"><span className="common__icon common__icon--search"></span></Link>
-      <div style={{ height: '1800px' }}></div>
+      <div className="home__content-wapper">
+        
+      </div>
       <TabBar/>
     </>
   )

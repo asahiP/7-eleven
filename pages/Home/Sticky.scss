@@ -9,6 +9,8 @@ $sticky__info-offset-bottom: $sticky__location-size + $sticky__location-offset-b
 .sticky {
   &__wapper {
     position: fixed;
+    left: 0;
+    top: 0;
 
     width: 100%;
     height: $sticky__wapper-height;
