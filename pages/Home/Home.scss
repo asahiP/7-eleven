@@ -1,14 +1,15 @@
 @import '~@/variables.scss';
 @import './Sticky.scss';
+@import './TapBar.scss';
 
 .home {
 
   &__search-wapper {
     position: fixed;
-    top: $offset + 7;
-    right: $offset;
+    top: $sticky__offset + 7;
+    right: $sticky__offset;
 
-    font-size: 32px;
+    font-size: $icon-size-main;
     font-weight: 600;
     color: $font-color-main;
     text-decoration: none;

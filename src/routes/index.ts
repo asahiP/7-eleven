@@ -1,13 +1,13 @@
 interface route {
   path: string
   authname: string
-  component: JSX.Element
+  component: (props?: any) => JSX.Element
   exact?: boolean
 }
 
 import Home from '@pages/Home/Home'
 
-const routes = [
+const routes: route[] = [
   {
     path: '/',
     authname: 'home',

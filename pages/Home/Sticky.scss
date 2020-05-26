@@ -1,19 +1,17 @@
-@import '~@/variables.scss';
-
-$wapper-height: 160px;
-$offset: 24px;
-$icon-size: 50px;
-$info-size: 28px;
-$location-size: 18px;
-$location-offset-bottom: 10px;
-$info-offset-bottom: $location-size + $location-offset-bottom + 12px;
+$sticky__wapper-height: 160px;
+$sticky__offset: 24px;
+$sticky__icon-size: 50px;
+$sticky__info-size: 28px;
+$sticky__location-size: 18px;
+$sticky__location-offset-bottom: 10px;
+$sticky__info-offset-bottom: $sticky__location-size + $sticky__location-offset-bottom + 12px;
 
 .sticky {
   &__wapper {
     position: fixed;
 
     width: 100%;
-    height: $wapper-height;
+    height: $sticky__wapper-height;
 
     overflow: hidden;
 
@@ -22,7 +20,7 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
     transition: transform .2s ease-out;
 
     &--is-sticky {
-      transform: translate3d(0, 0 - $icon-size - $offset, 0);
+      transform: translate3d(0, 0 - $sticky__icon-size - $sticky__offset, 0);
 
       & .sticky__user-icon {
         transform: translate3d(0, -20px, 0);
@@ -33,11 +31,11 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
   &__user {
     &-icon {
       position: absolute;
-      top: $offset;
-      left: $offset;
+      top: $sticky__offset;
+      left: $sticky__offset;
   
-      width: $icon-size;
-      height: $icon-size;
+      width: $sticky__icon-size;
+      height: $sticky__icon-size;
       overflow: hidden;
   
       border-radius: 50%;
@@ -49,20 +47,20 @@ $info-offset-bottom: $location-size + $location-offset-bottom + 12px;
     }
     &-info {
       position: absolute;
-      bottom: $info-offset-bottom;
-      left: $offset;
+      bottom: $sticky__info-offset-bottom;
+      left: $sticky__offset;
 
-      font-size: $info-size;
+      font-size: $sticky__info-size;
       line-height: 1;
       font-weight: 700;
       color: $font-color-main;
     }
     &-location {
       position: absolute;
-      left: $offset;
-      bottom: $location-offset-bottom;
+      left: $sticky__offset;
+      bottom: $sticky__location-offset-bottom;
 
-      font-size: $location-size;
+      font-size: $sticky__location-size;
       line-height: 1;
       color: $font-color-sub;
 
