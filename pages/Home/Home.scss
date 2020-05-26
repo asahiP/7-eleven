@@ -3,8 +3,14 @@
 
 .home {
 
-  &__search {
+  &__search-wapper {
+    position: fixed;
     top: $offset + 7;
     right: $offset;
+
+    font-size: 32px;
+    font-weight: 600;
+    color: $font-color-main;
+    text-decoration: none;
   }
 }
