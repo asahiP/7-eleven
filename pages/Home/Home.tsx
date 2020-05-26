@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './Home.scss'
 import Sticky from './Sticky'
 import { throttle } from '@/utils'
 
-import Search from '@/components/Search'
 
 export default function Home (): JSX.Element {
   const [scrollTop, setScrollTop] = useState(0)
@@ -17,7 +17,7 @@ export default function Home (): JSX.Element {
   return (
     <>
       <Sticky scrollTop={scrollTop}/>
-      <Search className="home__search" onSubmit={(e: any, t: any) => console.log(t)} style={{ position: 'fixed' }}/>
+      <Link to="/" className="home__search-wapper"><span className="common__icon common__icon--search"></span></Link>
       <div style={{ height: '1800px' }}></div>
     </>
   )

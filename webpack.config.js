@@ -37,6 +37,15 @@ module.exports = {
         test: /\.(s[ac]ss|css)$/i,
         use: [
           { loader: 'style-loader' },
+          {
+            loader: 'px2vw-view-loader',
+            query: {
+              viewportWidth: 480,
+              viewportUnit: 'vw',
+              minPixelValue: 1,
+              decimal: 3
+            }
+          },
           { loader: 'css-loader', options: { importLoaders: 2 } },
           { loader: 'postcss-loader', options: { plugins: [require('autoprefixer')] } },
           { loader: 'sass-loader' }
