@@ -14,4 +14,11 @@
     color: $font-color-main;
     text-decoration: none;
   }
+
+  &__content {
+    &-wapper {
+      margin-top: $sticky__wapper-height;
+      margin-bottom: $tapbar__wapper-height;
+    }
+  }
 }
