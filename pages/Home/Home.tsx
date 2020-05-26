@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { throttle } from '@/utils'
+import { throttle, range } from '@/utils'
 
 import './Home.scss'
 import Sticky from './Sticky'
 import TabBar from './TapBar'
+import ScrollView from '@/components/ScrollView'
 
 export default function Home (): JSX.Element {
   const [scrollTop, setScrollTop] = useState(0)
