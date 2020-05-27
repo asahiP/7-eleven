@@ -11,6 +11,7 @@ $sticky__info-offset-bottom: $sticky__location-size + $sticky__location-offset-b
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 2;
 
     width: 100%;
     height: $sticky__wapper-height;

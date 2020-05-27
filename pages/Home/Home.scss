@@ -8,6 +8,7 @@
     position: fixed;
     top: $sticky__offset + 7;
     right: $sticky__offset;
+    z-index: 2;
 
     font-size: $icon-size-main;
     font-weight: 600;
