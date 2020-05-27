@@ -1,15 +1,20 @@
 
-interface state {
-  userInfo: userInfo
+interface State {
+  userInfo: UserInfo
 }
 
-interface userInfo {
+interface UserInfo {
   name: string
   avatar: string
   location: string
 }
 
-const initialState: state = {
+interface Action {
+  type: string
+  payload: { [key: string]: any }
+}
+
+const initialState: State = {
   userInfo: {
     name: 'Luke',
     avatar: '',
@@ -17,7 +22,7 @@ const initialState: state = {
   }
 }
 
-export default function rootReducer (state = initialState, action: any): state {
+export default function rootReducer (state = initialState, action: Action): State {
   switch (action.type) {
     default:
       return state

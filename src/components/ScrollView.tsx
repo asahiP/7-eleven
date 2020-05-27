@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { classNames } from '@/utils'
+
+interface Props {
+  children: React.ReactChild
+  onScroll?: (e: React.UIEvent) => void
+  className?: string
+}
 
 export default function ScrollView ({
   children,
   onScroll: handleScroll,
   className
-}: any): JSX.Element {
+}: Props): JSX.Element {
   const wapperStyle = { overflow: 'hidden' }
   const [contentStyle, setContentStyle] = useState({
     overflow: 'scroll'
