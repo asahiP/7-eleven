@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default function Welcome ({ name }: any): JSX.Element {
+interface Props { name: string }
+
+export default function Welcome ({ name }: Props): JSX.Element {
   const morning = '早上好'
   const noon = '中午好'
   const afternoon = '下午好'

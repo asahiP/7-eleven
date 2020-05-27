@@ -7,8 +7,21 @@ import Welcome from './Welcome'
 
 import fake_avatar from '@public/img/fake_avatar.jpg'
 
-function ConnectedSticky ({ userInfo, scrollTop }: any): JSX.Element {
-  const { name, avatar } = userInfo
+interface Props {
+  userInfo: UserInfo
+  scrollTop: number
+}
+
+interface UserInfo {
+  [key: string]: any
+
+  name: string
+  avatar: string
+  location: string
+}
+
+function ConnectedSticky ({ userInfo, scrollTop }: Props): JSX.Element {
+  const { name, avatar, location } = userInfo
   const [wapperClassName, setWapperClassName] = useState('sticky__wapper')
   const wapper = useRef(null)
   const wapperHeight = useRef(0)
@@ -30,7 +43,7 @@ function ConnectedSticky ({ userInfo, scrollTop }: any): JSX.Element {
         <img src={fake_avatar} alt="user icon" width="100%"/>
       </Link>
       <Welcome name={name}/>
-      <span className="sticky__user-location">{ userInfo.location }</span>
+      <span className="sticky__user-location">{ location }</span>
     </div>
   )
 }

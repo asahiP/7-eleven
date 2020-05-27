@@ -1,4 +1,4 @@
-interface route {
+interface Route {
   path: string
   authname: string
   component: (props?: any) => JSX.Element
@@ -7,7 +7,7 @@ interface route {
 
 import Home from '@pages/Home/Home'
 
-const routes: route[] = [
+const routes: Route[] = [
   {
     path: '/',
     authname: 'home',
