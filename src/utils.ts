@@ -23,25 +23,34 @@ export function classNames(...classes: any): string {
   )].join(' ')
 }
 
-export function debounce (fn: Function, delay: number): (...args: any) => void {
+
+export function debounce (fn: Function, delay: number): (...args: any) => Promise<any> {
   let timer: any
   return function bundle (...args: any) {
     const context = this
     clearTimeout(timer)
-    timer = setTimeout(fn.bind(context, ...args), delay)
+
+    return new Promise((res, rej) => {
+      timer = setTimeout(() => {
+        res(fn.apply(context, args))
+      }, delay)
+
+    })
   }
 }
 
-export function throttle (fn: Function, delay: number): (...args: any) => void {
+export function throttle (fn: Function, delay: number): (...args: any) => any {
   let previous: number = null
   return function bundle (...args: any) {
     const context = this
     const now = Date.now()
 
-    if (now - previous > delay) {
-      fn.apply(context, args)
-      previous = now
-    }
+    return new Promise((res, rej) => {
+      if (now - previous > delay) {
+        previous = now
+        res(fn.apply(context, args))
+      }
+    })
   }
 }
 
