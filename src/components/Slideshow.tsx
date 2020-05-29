@@ -5,6 +5,7 @@ interface Props {
   className?: string
   children?: React.ReactNode
   onIndexChange?: (index: number) => void
+  onTranslateChange?: (relative: number) => void
   index?: number
 }
 
@@ -18,6 +19,7 @@ export default function Slideshow ({
   className,
   children,
   onIndexChange: handleIndexChange,
+  onTranslateChange: handleTranslateChange,
   index
 }: Props): JSX.Element {
   const wapper: React.MutableRefObject<HTMLDivElement> = useRef(null)
@@ -84,12 +86,34 @@ export default function Slideshow ({
     const { offsetWidth: cWidth} = content.current
     const minTranslate = (cWidth - wWidth) * -1
     const computedOffsetLeft = Math.max(minTranslate, Math.min(offsetLeft, 0))
+    const { touchStartLeft } = handleTouchContext.current
 
     handleTouchContext.current.offsetLeft = computedOffsetLeft
     setcontentStyle(Object.assign({}, contentStyle, {
       transform: `translate3d(${computedOffsetLeft}px, 0, 0)`
     }))
 
+    const isToRight = computedOffsetLeft > touchStartLeft
+    const index = Math.max(
+      0,
+      Math.min(
+        computeIndex(touchStartLeft) + (isToRight ? -1 : 1),
+        remadeChildren.current.length - 1
+      )
+    )
+
+    let relative: number
+    /** 除数为0的权宜之计，可能有更优解 */
+    if (remadeChildren.current[index].left === 0) {
+      relative = (1 - computedOffsetLeft / (computedOffsetLeft + touchStartLeft)) * -1
+    } else {
+      relative = Math.abs(computedOffsetLeft / remadeChildren.current[index].left) + (isToRight ? -2 : 0)
+    }
+    /** 首尾取0 */
+    if (index === computeIndex(touchStartLeft)) relative = 0
+    /** 调用钩子函数 */
+    typeof handleTranslateChange === 'function' && handleTranslateChange(relative)
+    
     return computedOffsetLeft
   }
 
@@ -102,7 +126,7 @@ export default function Slideshow ({
     const { request } = handleAnimationContext.current
     context.isToucing = true
     context.touchStartTime = timeStamp
-    context.touchStartX = pageX
+    context.touchStartX = context.touchEndX = pageX
     context.touchStartLeft = context.offsetLeft
 
     window.cancelAnimationFrame(request)
