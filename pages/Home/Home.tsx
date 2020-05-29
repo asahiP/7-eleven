@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { throttle, range } from '@/utils'
+import { throttle } from '@/utils'
 
 import './Home.scss'
 import Sticky from './Sticky'
 import TabBar from './TapBar'
-import Slideshow from '@/components/Slideshow'
-import Flipping from '@/components/Flipping'
+import Products from './Products'
+import leftIcon from '@public/icons/place@2x.png'
+import rightIcon from '@public/icons/oder@2x.png'
 
 export default function Home (): JSX.Element {
   const [scrollTop, setScrollTop] = useState(0)
@@ -22,12 +23,27 @@ export default function Home (): JSX.Element {
       <Sticky scrollTop={scrollTop}/>
       <Link to="/" className="home__search-wapper"><span className="common__icon common__icon--search"></span></Link>
       <div className="home__content-wapper">
-        <Flipping value={'asdadasd'}/>
-        <Slideshow index={2}>
-          {
-            range(10).map((i) => (<div key={i} style={{ width: '100%', height: 300, float: 'left', background: `rgb(${range(3).map(e => 20 * i).join(', ')})` }}></div>))
-          }
-        </Slideshow>
+        <Products/>
+        <div className="home__content-entry">
+          <Link to="/" className="home__content-entry--left">
+            <div className="home__content-entry-icon">
+              <img src={leftIcon} alt="place" width="100%"/>
+            </div>
+            <div className="home__content-entry-info--left">
+              <span className="home__content-entry-info--main">立即点餐</span><br/>
+              <span className="home__content-entry-info--sub">在线点，到店取</span>
+            </div>
+          </Link>
+          <Link to="/" className="home__content-entry--right">
+            <div className="home__content-entry-icon">
+              <img src={rightIcon} alt="oder" width="100%"/>
+            </div>
+            <div className="home__content-entry-info--right">
+              <span className="home__content-entry-info--main">我的订单</span><br/>
+              <span className="home__content-entry-info--sub">随时查询进度</span>
+            </div>
+          </Link>
+        </div>
       </div>
       <TabBar/>
     </>
