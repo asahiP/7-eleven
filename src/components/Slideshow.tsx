@@ -20,7 +20,7 @@ export default function Slideshow ({
   children,
   onIndexChange: handleIndexChange,
   onTranslateChange: handleTranslateChange,
-  index
+  index = 0
 }: Props): JSX.Element {
   const wapper: React.MutableRefObject<HTMLDivElement> = useRef(null)
   const content: React.MutableRefObject<HTMLDivElement> = useRef(null)

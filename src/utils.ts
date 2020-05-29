@@ -119,3 +119,23 @@ export function characterRange (start: string, end: string): string[] {
     /** 遍历数组并返回字符串 */
     .map(i => String.fromCharCode(i))
 }
+
+export function getRandStr (len: number) {
+  let seed = 'abcdefghijklmnoprstuvwxyz'
+    + '0123456789'
+  let sLen = seed.length  
+  let result = ''
+
+  while (len--) {
+    let part = seed[Math.floor(Math.random() * sLen)]
+    result += Math.random() > 0.5
+      ? part
+      : part.toUpperCase()
+  }
+
+  return result
+}
+
+export function random (arr: any[]): any {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
