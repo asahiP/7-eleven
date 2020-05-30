@@ -139,3 +139,15 @@ export function getRandStr (len: number) {
 export function random (arr: any[]): any {
   return arr[Math.floor(Math.random() * arr.length)]
 }
+
+export function shuffle (arr: any[]): any[] {
+  const copy = arr.concat()
+  let len = copy.length
+
+  while (len) {
+    const random = Math.floor(Math.random() * len--);
+    [copy[len], copy[random]] = [copy[random], copy[len]]
+  }
+
+  return copy
+}

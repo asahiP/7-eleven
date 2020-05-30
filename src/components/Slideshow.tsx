@@ -3,9 +3,9 @@ import { easeOutQuad } from '@/easing'
 
 interface Props {
   className?: string
-  children?: React.ReactNode
+  children: React.ReactNode
   onIndexChange?: (index: number) => void
-  onTranslateChange?: (relative: number) => void
+  // onTranslateChange?: (relative: number) => void
   index?: number
 }
 
@@ -19,13 +19,13 @@ export default function Slideshow ({
   className,
   children,
   onIndexChange: handleIndexChange,
-  onTranslateChange: handleTranslateChange,
+  // onTranslateChange: handleTranslateChange,
   index = 0
 }: Props): JSX.Element {
-  const wapper: React.MutableRefObject<HTMLDivElement> = useRef(null)
-  const content: React.MutableRefObject<HTMLDivElement> = useRef(null)
+  const wapper = useRef(null as HTMLDivElement)
+  const content = useRef(null as HTMLDivElement)
   const [contentStyle, setcontentStyle] = useState({} as React.CSSProperties)
-  const remadeChildren: React.MutableRefObject<RemadeChildren[]> = useRef([])
+  const remadeChildren = useRef([] as RemadeChildren[])
   const [initial, setInitial] = useState(false)
 
   const handleAnimationContext = useRef({
@@ -42,7 +42,9 @@ export default function Slideshow ({
     isToRight: null,
     touchStartTime: 0,
     touchStartX: 0,
-    touchStartLeft:0,
+    touchStartY: 0,
+    touchStartLeft: 0,
+    hitedDistanceY: 0,
     touchEndX: 0
   })
 
@@ -102,17 +104,17 @@ export default function Slideshow ({
       )
     )
 
-    let relative: number
-    /** 除数为0的权宜之计，可能有更优解 */
-    if (remadeChildren.current[index].left === 0) {
-      relative = (1 - computedOffsetLeft / (computedOffsetLeft + touchStartLeft)) * -1
-    } else {
-      relative = Math.abs(computedOffsetLeft / remadeChildren.current[index].left) + (isToRight ? -2 : 0)
-    }
-    /** 首尾取0 */
-    if (index === computeIndex(touchStartLeft)) relative = 0
-    /** 调用钩子函数 */
-    typeof handleTranslateChange === 'function' && handleTranslateChange(relative)
+    // let relative: number
+    // /** 除数为0的权宜之计，可能有更优解 */
+    // if (remadeChildren.current[index].left === 0) {
+    //   relative = (1 - computedOffsetLeft / (computedOffsetLeft + touchStartLeft)) * -1
+    // } else {
+    //   relative = Math.abs(computedOffsetLeft / remadeChildren.current[index].left) + (isToRight ? -2 : 0)
+    // }
+    // /** 首尾取0 */
+    // if (index === computeIndex(touchStartLeft)) relative = 0
+    // /** 调用钩子函数 */
+    // typeof handleTranslateChange === 'function' && handleTouchContext.current.isToucing && handleTranslateChange(relative)
     
     return computedOffsetLeft
   }
@@ -120,13 +122,14 @@ export default function Slideshow ({
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const { timeStamp, touches } = e
     const { 0: touch } = touches
-    const { pageX } = touch
+    const { pageX, pageY } = touch
     
     const { current: context } = handleTouchContext
     const { request } = handleAnimationContext.current
     context.isToucing = true
     context.touchStartTime = timeStamp
     context.touchStartX = context.touchEndX = pageX
+    context.touchStartY = pageY
     context.touchStartLeft = context.offsetLeft
 
     window.cancelAnimationFrame(request)
@@ -134,17 +137,25 @@ export default function Slideshow ({
   }
 
   const handleTouchMove = (e: TouchEvent) => {
+    const minDistance = 20
     const { current: context } = handleTouchContext
-    const { isToucing, touchStartX, touchStartLeft } = context
+    const { isToucing, touchStartX, touchStartY, touchStartLeft, hitedDistanceY } = context
 
     if (isToucing) {
       const { touches } = e
       const { 0: touch } = touches
-      const { pageX } = touch
-      const distance = touchStartX - pageX
-      context.isToRight = distance < 0
-      context.touchEndX = pageX
-      setTranslate(touchStartLeft + distance * -1)
+      const { pageX, pageY } = touch
+      const [min, max] = [pageY, touchStartY].map(n => Math.abs(n)).sort((a, b) => a - b)
+      const distanceY = max - min + hitedDistanceY
+
+      if (distanceY < minDistance) {
+        const distanceX = touchStartX - pageX
+        context.isToRight = distanceX < 0
+        context.touchEndX = pageX
+        setTranslate(touchStartLeft + distanceX * -1)
+      } else {
+        context.hitedDistanceY = distanceY
+      }
     }
   }
 
@@ -156,6 +167,7 @@ export default function Slideshow ({
 
     if (isToucing) {
       context.isToucing = false
+      context.hitedDistanceY = 0
       const { timeStamp } = e
       let index = timeStamp - touchStartTime < delay && Math.abs(touchEndX - touchStartX) > minDistance
         ? context.index + (isToRight ? -1 : 1)
