@@ -1,4 +1,5 @@
 @import '~@public/iconfont/iconfont.css';
+@import './variables.scss';
 
 $font-family:
   'DIN Alternate Regular',
@@ -28,36 +29,97 @@ a {
   -webkit-user-select: none;
   -moz-user-focus: none;
   -moz-user-select: none;
+  text-decoration: none;
 }
 
-.common__icon {
-  font-family: "iconfont" !important;
-  font-size: 1em;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+.common {
+  &__icon {
+    font-family: "iconfont" !important;
+    font-size: 1em;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-.common__icon--cart:before {
-  content: "\e61b";
-}
+    &--cart:before {
+      content: "\e61b";
+    }
+    &--scan:before {
+      content: "\e620";
+    }
+    &--search:before {
+      content: "\e601";
+    }
+    &--time:before {
+      content: "\e619";
+    }
+    &--heating:before {
+      content: "\e621";
+    }
+    &--lightning:before {
+      content: "\e87a";
+    }
+  }
+  &__nav {
+    &-wapper {
+      width: 100%;
+      height: 60px;
 
-.common__icon--scan:before {
-  content: "\e620";
-}
+      margin-top: 22px;
+      padding: 0 12px;
 
-.common__icon--search:before {
-  content: "\e601";
-}
+      box-sizing: border-box;
+    }
 
-.common__icon--time:before {
-  content: "\e619";
-}
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-.common__icon--heating:before {
-  content: "\e621";
-}
+    width: 100% + (24px / $UI-size * 100);
 
-.common__icon--lightning:before {
-  content: "\e87a";
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    &-item {
+      padding: 16px;
+
+      list-style: none;
+
+      font-size: 16px;
+      font-weight: 500;
+      color: $font-color-sub;
+      line-height: 1;
+      white-space: nowrap;
+
+      
+      & span {
+        display: inline-block;
+        transform-origin: bottom;
+        transition: transform .25s ease-out, color .25s ease-out;
+      }
+
+      &--current span {
+        font-weight: 700;
+        color: $font-color-main;
+        transform: scale(1.3);
+      }
+    }
+
+    &-slider {
+      width: 27px;
+      height: 4px;
+
+      border-radius: 4px;
+
+      background: $theme-green;
+    }
+    &-clear {
+      &::after {
+        display: block;
+        clear: both;
+        content: '';
+      }
+    }
+  }
 }
