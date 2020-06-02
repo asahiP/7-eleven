@@ -1,5 +1,6 @@
 @import '~@public/iconfont/iconfont.css';
 @import './variables.scss';
+@import '~@/components/Status.scss';
 
 $font-family:
   'DIN Alternate Regular',
@@ -32,6 +33,7 @@ a {
   text-decoration: none;
 }
 
+
 .common {
   &__icon {
     font-family: "iconfont" !important;
@@ -57,6 +59,15 @@ a {
     }
     &--lightning:before {
       content: "\e87a";
+    }
+    &--star:before {
+      content: "\e60a";
+    }
+    &--heart:before {
+      content: "\e61a";
+    }
+    &--arrow-left:before {
+      content: "\e65a";
     }
   }
   &__nav {
@@ -114,12 +125,13 @@ a {
 
       background: $theme-green;
     }
-    &-clear {
-      &::after {
-        display: block;
-        clear: both;
-        content: '';
-      }
+
+  }
+  &__clear {
+    &::after {
+      display: block;
+      clear: both;
+      content: '';
     }
   }
 }

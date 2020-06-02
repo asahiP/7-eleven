@@ -1,0 +1,21 @@
+.star {
+  &__rating {
+    position: absolute;
+
+    font-size: 15px;
+    color: #dddddd;
+
+    & > span {
+      margin-left: 5px;
+    }
+  }
+  &__rating--current {
+    @extend .star__rating;
+    position: absolute;
+    top: 0;
+
+    overflow: hidden;
+
+    color: #f8cc46;
+  }
+}

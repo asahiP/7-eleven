@@ -17,7 +17,7 @@ interface Action {
 const initialState: State = {
   userInfo: {
     name: 'Luke',
-    avatar: '',
+    avatar: require('@public/img/fake_avatar.jpg').default,
     location: '上海浦东新区店(NO.1032)'
   }
 }
