@@ -5,8 +5,6 @@ import { classNames } from '@/utils'
 
 import Welcome from './Welcome'
 
-import fake_avatar from '@public/img/fake_avatar.jpg'
-
 interface Props {
   userInfo: UserInfo
   scrollTop: number
@@ -39,8 +37,7 @@ function ConnectedSticky ({ userInfo, scrollTop }: Props): JSX.Element {
   return (
     <div className={wapperClassName} ref={wapper}>
       <Link className="sticky__user-icon" to="/">
-        {/* <img src={avatar} alt="user icon" width="100%"/> */}
-        <img src={fake_avatar} alt="user icon" width="100%"/>
+        <img src={avatar} alt="user icon" width="100%"/>
       </Link>
       <Welcome name={name}/>
       <span className="sticky__user-location">{ location }</span>

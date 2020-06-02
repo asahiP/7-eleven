@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { clamp } from '@/utils'
 
 interface Props {
   children?: React.ReactNode
@@ -7,16 +8,6 @@ interface Props {
   style?: React.CSSProperties
   scrollTop?: number
   scrollLeft?: number
-}
-
-function limit (val: number, min: number, max: number): number {
-  return Math.min(
-    max,
-    Math.max(
-      val,
-      min
-    )
-  )
 }
 
 export default function ScrollView ({
@@ -50,13 +41,13 @@ export default function ScrollView ({
   useEffect(() => {
     const { current } = content
     
-    current.scrollLeft = limit(scrollLeft, 0, current.scrollWidth)
+    current.scrollLeft = clamp(scrollLeft, 0, current.scrollWidth)
   }, [scrollLeft])
 
   useEffect(() => {
     const { current } = content
     
-    current.scrollTop = limit(scrollTop, 0, current.scrollHeight)
+    current.scrollTop = clamp(scrollTop, 0, current.scrollHeight)
   }, [scrollTop])
 
   return (

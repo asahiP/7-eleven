@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { easeOutQuad } from '@/easing'
+import { clamp } from '@/utils'
 
 interface Props {
   className?: string
   children: React.ReactNode
   onIndexChange?: (index: number) => void
-  // onTranslateChange?: (relative: number) => void
   index?: number
 }
 
@@ -19,7 +19,6 @@ export default function Slideshow ({
   className,
   children,
   onIndexChange: handleIndexChange,
-  // onTranslateChange: handleTranslateChange,
   index = 0
 }: Props): JSX.Element {
   const wapper = useRef(null as HTMLDivElement)
@@ -84,37 +83,20 @@ export default function Slideshow ({
 
   /** contentStyle更新函数 */
   const setTranslate = (offsetLeft: number) => {
-    const { offsetWidth: wWidth} = wapper.current
-    const { offsetWidth: cWidth} = content.current
+    const { current: wCurrent } = wapper
+    const { current: cCurrent } = content
+    if (!wCurrent || !cCurrent) {
+      return 0
+    }
+    const { offsetWidth: wWidth} = wCurrent
+    const { offsetWidth: cWidth} = cCurrent
     const minTranslate = (cWidth - wWidth) * -1
     const computedOffsetLeft = Math.max(minTranslate, Math.min(offsetLeft, 0))
-    const { touchStartLeft } = handleTouchContext.current
-
+    
     handleTouchContext.current.offsetLeft = computedOffsetLeft
     setcontentStyle(Object.assign({}, contentStyle, {
       transform: `translate3d(${computedOffsetLeft}px, 0, 0)`
     }))
-
-    const isToRight = computedOffsetLeft > touchStartLeft
-    const index = Math.max(
-      0,
-      Math.min(
-        computeIndex(touchStartLeft) + (isToRight ? -1 : 1),
-        remadeChildren.current.length - 1
-      )
-    )
-
-    // let relative: number
-    // /** 除数为0的权宜之计，可能有更优解 */
-    // if (remadeChildren.current[index].left === 0) {
-    //   relative = (1 - computedOffsetLeft / (computedOffsetLeft + touchStartLeft)) * -1
-    // } else {
-    //   relative = Math.abs(computedOffsetLeft / remadeChildren.current[index].left) + (isToRight ? -2 : 0)
-    // }
-    // /** 首尾取0 */
-    // if (index === computeIndex(touchStartLeft)) relative = 0
-    // /** 调用钩子函数 */
-    // typeof handleTranslateChange === 'function' && handleTouchContext.current.isToucing && handleTranslateChange(relative)
     
     return computedOffsetLeft
   }
@@ -172,7 +154,7 @@ export default function Slideshow ({
       let index = timeStamp - touchStartTime < delay && Math.abs(touchEndX - touchStartX) > minDistance
         ? context.index + (isToRight ? -1 : 1)
         : computeIndex(offsetLeft)
-      index = Math.max(0, Math.min(index, remadeChildren.current.length - 1))
+      index = clamp(index, 0, remadeChildren.current.length - 1)
       const changeValue = remadeChildren.current[index].left - offsetLeft
       handleAnimationContext.current.request = window.requestAnimationFrame(timeStamp => step(timeStamp, offsetLeft, changeValue))
       context.index = index
@@ -228,7 +210,7 @@ export default function Slideshow ({
     if (!initial) return
     const { current: context } = handleTouchContext
     const { offsetLeft } = context
-    const _index = Math.max(0, Math.min(index, remadeChildren.current.length - 1))
+    const _index = clamp(index, 0, remadeChildren.current.length - 1)
     
     const changeValue = remadeChildren.current[_index].left - offsetLeft
     handleAnimationContext.current.request = window.requestAnimationFrame(timeStamp => step(timeStamp, offsetLeft, changeValue))

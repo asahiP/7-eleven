@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { classNames } from '@/utils'
+
+import Status from '@/components/Status'
 
 interface Props {
   item: Products
@@ -12,7 +15,7 @@ export default function ProductsItem ({
   index,
   current,
 }: Props) {
-  const { name, pic, price, isSelfFetch, delay, canHeating } = item
+  const { name, pic, price, isSelfFetch, delay, canHeating, id } = item
   const [className, setClassName] = useState('')
 
 
@@ -29,29 +32,14 @@ export default function ProductsItem ({
   return (
     <div className="products__item-wapper">
       <div className={className}>
-        <div className="products__item-card__img">
-          <img src={pic} alt={name} width="100%"/>
-        </div>
+        <Link to={`/detail/${id}`}>
+          <div className="products__item-card__img">
+            <img src={pic} alt={name} width="100%"/>
+          </div>
+        </Link>
         <div className="products__item-card__info">
           <span className="products__item-card__info-name">{name}</span>
-          <span className="products__item-card__info-status">
-            <span className="common__icon common__icon--lightning products__item-card__info-icon--lightning"></span>
-            {' ' + isSelfFetch ? '到店取餐' : '外卖配送'}
-            <span className="common__icon common__icon--time products__item-card__info-icon--time"></span>
-            {' ' + (delay ? `${delay[0]}~${delay[1]}min` : '即到即食')}
-            {
-              canHeating
-                ? (
-                  <>
-                  <span className="common__icon common__icon--heating products__item-card__info-icon--heating"></span>
-                  {' '}
-                  <span>支持加热</span>
-                  </>
-                )
-                : ''
-            }
-          </span>
-          <br/>
+          <Status {...item}/>
           <span className="products__item-card__info-price">{price.toFixed(2)}</span>
         </div>
         <button className="products__item-card__add2cart"></button>

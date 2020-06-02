@@ -151,3 +151,7 @@ export function shuffle (arr: any[]): any[] {
 
   return copy
 }
+
+export function clamp (val: number, min: number, max: number): number {
+  return Math.min(max, Math.max(val, min))
+}

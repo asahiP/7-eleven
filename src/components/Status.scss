@@ -1,0 +1,28 @@
+.status {
+  display: block;
+
+  font-size: 16px;
+  color: $font-color-placeholder;
+
+  transform: translate3d(-3px, 0, 0);
+  
+  &-icon {
+    margin-left: 15px;
+    &:first-child {
+      margin-left: 0;
+    }
+  
+    &--lightning {
+      @extend .status-icon;
+      color: $theme-orange;
+    }
+    &--time {
+      @extend .status-icon;
+      color: $theme-green;
+    }
+    &--heating {
+      @extend .status-icon;
+      color: $theme-red;
+    }
+  }
+}

@@ -5,21 +5,20 @@ const fakeComment: string[] = ["包装干净整洁，咖啡一点也没有撒，
 const fakeUserPics: string[] = range(1, 7).map(i => require(`@public/img/default/${i}.jpg`).default)
 
 function reviewFactory (): Review {
-  const userName = getRandStr(random([8, 12, 15]))
+  const userName = getRandStr(random([8, 9, 10, 11]))
     .replace(/.*/, fragment => {
       return fragment.slice(0, 3) + '*'.repeat(fragment.length - 6) + fragment.slice(-3)
     })
   const userPic = random(fakeUserPics)
   const rating = random([3, 4, 5])
   const time = Date.now() + random([
-    -1000,
-    -5000,
-    -10000,
-    -20000,
-    -30000,
-    -40000,
-  ].map(i => i * 1000 * 60))
-  const pics: string[] = range(random([2, 3, 4])).map(i => random(fakePics))
+    -1000, -5000,
+    -10000, -20000,
+    -30000, -40000,
+    -80000, -160000,
+    -160000 * 15
+  ].map(i => i * 1000))
+  const pics: string[] = range(random([0, 1, 2, 3])).map(i => random(fakePics))
   const comment = random(fakeComment)
 
   return {
@@ -32,6 +31,6 @@ function reviewFactory (): Review {
   }
 }
 
-const fakeReviews: Review[] = range(50).map(i => reviewFactory())
-
-export default fakeReviews
+export default function fakeReviews (length: number): Review[] {
+  return range(length).map(i => reviewFactory())
+}

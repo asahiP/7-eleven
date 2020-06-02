@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
+const publicPath = '/'
 
 module.exports = {
   entry: {
@@ -9,12 +10,15 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath,
   },
   devtool: 'source-map',
   devServer: {
     hot: true,
-    contentBase: 'dist'
+    contentBase: 'dist',
+    publicPath,
+    historyApiFallback: true
   },
   module: {
     rules: [
