@@ -31,10 +31,9 @@ export default function Detail () {
   return (
     <>
       <img src={pic} alt={name} width="100%"/>
-      <span
-        className="common__icon common__icon--arrow-left detail__back"
-        onClick={goBack}
-      ></span>
+      <span className="detail__back" onClick={goBack}>
+        <span className="common__icon common__icon--arrow-left"></span>
+      </span>
       <div className="detail__wapper">
         <div>
           <span

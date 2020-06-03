@@ -1,0 +1,114 @@
+$profile_font-color-sub: rgba(255, 255, 255, .7);
+
+.profile {
+  &__wapper {
+    position: relative;
+
+    width: $UI-size;
+    height: 500px;
+    background: $theme-green;
+  }
+  &__icon {
+    &-back {
+      position: absolute;
+      top: 30px;
+      left: 24px;
+  
+      font-size: 32px;
+      color: white;
+    }
+    &-settings {
+      @extend .profile__icon-back;
+      left: unset;
+      right: 24px;
+      font-weight: 700;
+    }
+  }
+  &__avatar {
+    position: absolute;
+    left: 24px;
+    top: 105px;
+
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+
+    border: 3px solid white;
+    border-radius: 50%;
+
+    box-shadow: 0 5px 5px 4px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+  }
+  &__name {
+    position: absolute;
+    top: 105 + 10px;
+    left: 140px;
+
+    font-size: 26px;
+    color: white;
+  }
+  &__description {
+    position: absolute;
+    top: 105 + 10 + 26 + 15px;
+    left: 140px;
+
+    font-size: 17px;
+    color: $profile_font-color-sub;
+  }
+  &__box {
+    position: relative;
+    top: 220px;
+
+    padding: 0 55px;
+    &-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      position: absolute;
+      &:nth-child(1) {
+        left: 55px;
+        top: 0;
+      }
+      &:nth-child(2) {
+        left: 50%;
+        top: 0;
+        transform: translate3d(-50%, 0, 0);
+      }
+      &:nth-child(3) {
+        right: 55px;
+        top: 0;
+      }
+    }
+    &-title {
+      display: block;
+      position: relative;
+      top: 35px;
+
+      font-size: 19px;
+      color: $profile_font-color-sub;
+    }
+  }
+
+  &__point {
+    position: absolute;
+
+    font-size: 26px;
+    color: white;
+    &-arrow {
+      font-size: 13px;
+    }
+  }
+  &__balance {
+    @extend .profile__point;
+
+    &::before {
+      font-size: 17px;
+      content: '￥';
+    }
+  }
+  &__history {
+    @extend .profile__point;
+  }
+}

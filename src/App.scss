@@ -69,6 +69,21 @@ a {
     &--arrow-left:before {
       content: "\e65a";
     }
+    &--coupon:before {
+      content: "\e608";
+    }
+    &--customer-service:before {
+      content: "\e61c";
+    }
+    &--settings:before {
+      content: "\e684";
+    }
+    &--info:before {
+      content: "\e622";
+    }
+    &--arrow-top:before {
+      content: "\e758";
+    }
   }
   &__nav {
     &-wapper {
