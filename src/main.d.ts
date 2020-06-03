@@ -41,3 +41,7 @@ declare interface Products {
   /** 能否加热 */
   canHeating: boolean
 }
+
+declare interface Oder {
+  
+}

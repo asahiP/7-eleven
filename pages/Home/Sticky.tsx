@@ -36,7 +36,7 @@ function ConnectedSticky ({ userInfo, scrollTop }: Props): JSX.Element {
 
   return (
     <div className={wapperClassName} ref={wapper}>
-      <Link className="sticky__user-icon" to="/">
+      <Link className="sticky__user-icon" to="/user">
         <img src={avatar} alt="user icon" width="100%"/>
       </Link>
       <Welcome name={name}/>

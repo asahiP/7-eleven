@@ -4,6 +4,7 @@ import RouteFactory from './RouteFactory'
 
 import Home from '@pages/Home/Home'
 import Detail from '@pages/Detail/Detail'
+import User from '@pages/User/User'
 
 const routes: RouteConfig[] = [
   {
@@ -17,6 +18,11 @@ const routes: RouteConfig[] = [
     authname: 'detail',
     component: Detail,
   },
+  {
+    path: '/user',
+    authname: 'user',
+    component: User,
+  }
 ]
 
 export default function Routes () {

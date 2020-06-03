@@ -1,9 +1,9 @@
-type Constructor = (props?: any) => JSX.Element
+type ComponentConstructor = (props?: any) => JSX.Element
 
 interface RouteConfig {
   path: string
   authname: string
-  component: Constructor
+  component: ComponentConstructor
   exact?: boolean
   children?: RouteConfig[]
 }
