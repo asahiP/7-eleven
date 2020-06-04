@@ -21,7 +21,7 @@ export default function ProductListItem ({ product }: Props) {
           <span className="home__content-list-price--before">{(price / 0.8).toFixed(2)}</span>
         </span>
       </span>
-      <button className="home__content-list-add2cart"></button>
+      <button className="common__increase"></button>
     </div>
   )
 }

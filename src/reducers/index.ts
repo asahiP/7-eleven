@@ -1,7 +1,9 @@
-
+import { INIT_FROM_PRESIST } from '@/constants'
 interface State {
   userInfo: UserInfo
   oder: Oder[]
+  cart: Products[]
+  mapCartToCount: { [key: string]: number }
 }
 
 interface UserInfo {
@@ -29,11 +31,15 @@ const initialState: State = {
     balance: 214.5,
     history: []
   },
-  oder: []
+  oder: [],
+  cart: [],
+  mapCartToCount: {}
 }
 
 export default function rootReducer (state = initialState, action: Action): State {
   switch (action.type) {
+    case INIT_FROM_PRESIST:
+      return Object.assign({}, state, action.payload)
     default:
       return state
   }

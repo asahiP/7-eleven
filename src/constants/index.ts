@@ -1,0 +1,1 @@
+export const INIT_FROM_PRESIST = 'INIT_FROM_PRESIST'

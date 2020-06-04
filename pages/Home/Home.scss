@@ -174,45 +174,6 @@
           }
         }
       }
-      &-add2cart {
-        position: absolute;
-        right: 7px;
-        bottom: 10px;
-        
-        width: 30px;
-        height: 30px;
-
-        border: none;
-        border-radius: 50%;
-        outline: none;
-
-        background: $theme-green;
-
-        &--pseudo {
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-
-          width: 13px;
-          height: 2px;
-
-          margin: auto;
-
-          background: white;
-          content: '';
-        }
-
-        &::after {
-          @extend .home__content-list-add2cart--pseudo;
-        }
-        &::before {
-          @extend .home__content-list-add2cart--pseudo;
-          transform: rotate(90deg);
-        }
-      }
     }
   }
 }

@@ -2,8 +2,9 @@ type ComponentConstructor = (props?: any) => JSX.Element
 
 interface RouteConfig {
   path: string
-  authname: string
-  component: ComponentConstructor
+  authname?: string
+  component?: ComponentConstructor
   exact?: boolean
   children?: RouteConfig[]
+  redirect?: string
 }
