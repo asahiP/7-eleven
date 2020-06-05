@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { classNames } from '@/utils'
+import { $toast } from '@/components/Toast'
+
 
 import './Detail.scss'
 import fakeProduct from '@/store/fakeProduct'
@@ -21,17 +23,12 @@ export default function Detail () {
   const { id } = useParams()
   const { goBack } = useHistory()
   const item = productMap[id]
-  const { pic, name, price, description } = item
-  const isHot = Math.random() > 0.5
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  const { pic, name, price, description, isHot } = item
 
   return (
     <>
       <img src={pic} alt={name} width="100%"/>
-      <span className="detail__back" onClick={goBack}>
+      <span className="common__back" onClick={goBack}>
         <span className="common__icon common__icon--arrow-left"></span>
       </span>
       <div className="detail__wapper">
@@ -69,7 +66,7 @@ export default function Detail () {
         </div>
       </div>
       <div className="detail__tapbar">
-        <button className="detail__tapbar-favorite">
+        <button className="detail__tapbar-favorite" onClick={() => $toast('正在施工中')}>
           <span className="common__icon common__icon--heart"></span>
         </button>
         <button className="detail__tapbar-add2cart">

@@ -6,12 +6,12 @@
 .home {
   &__search-wapper {
     position: fixed;
-    top: $sticky__offset + 7;
-    right: $sticky__offset;
+    top: 30px;
+    right: 24px;
     z-index: 2;
 
     font-size: $icon-size-main;
-    font-weight: 600;
+    font-weight: 700;
     color: $font-color-main;
     text-decoration: none;
   }

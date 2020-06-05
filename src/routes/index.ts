@@ -5,34 +5,35 @@ import RouteFactory from './RouteFactory'
 import Home from '@pages/Home/Home'
 import Detail from '@pages/Detail/Detail'
 import User from '@pages/User/User'
-import Products from '@pages/Products/Products'
+import Markets from '@pages/Markets/Markets'
+import { useHistory } from 'react-router-dom'
 
 const routes: RouteConfig[] = [
   {
     path: '/',
-    authname: 'home',
+    name: 'home',
     component: Home,
     exact: true
   },
   {
     path: '/detail/:id',
-    authname: 'detail',
+    name: 'detail',
     component: Detail,
   },
   {
     path: '/user',
-    authname: 'user',
+    name: 'user',
     component: User,
   },
   {
-    path: '/products',
-    authname: 'products',
-    component: Products
+    path: '/markets',
+    name: 'markets',
+    component: Markets
   },
   {
     path: '/cart',
-    authname: 'cart',
-    component: Products
+    name: 'cart',
+    component: Markets
   },
 ]
 

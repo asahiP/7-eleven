@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { $toast } from '@/components/Toast'
 
 import './User.scss'
 import Profile from './Profile'
@@ -55,7 +56,7 @@ function ConnectedUser ({ oder }: Props) {
             <span className="user__oder-box-title">退款/售后</span>
           </div>
         </div>
-        <ul className="user__list">
+        <ul className="user__list" onClick={() => $toast('正在施工中')}>
           <li className="user__list-item">
             <span className="user__list-icon">
               <span className="common__icon common__icon--heart"></span>

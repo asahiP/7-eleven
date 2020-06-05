@@ -40,6 +40,8 @@ declare interface Products {
   delay?: number[]
   /** 能否加热 */
   canHeating: boolean
+  /** 是否热门产品 */
+  isHot: boolean
 }
 
 declare interface Oder {
