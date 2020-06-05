@@ -38,7 +38,7 @@ export default function Home (): JSX.Element {
       <div className="home__content-wapper">
         <Products products={fakeProduct.slice(3, 9).reverse()}/>
         <div className="home__content-entry">
-          <Link to="/" className="home__content-entry--left">
+          <Link to="/markets" className="home__content-entry--left">
             <div className="home__content-entry-icon">
               <img src={leftIcon} alt="place" width="100%"/>
             </div>

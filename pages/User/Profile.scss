@@ -8,22 +8,6 @@ $profile_font-color-sub: rgba(255, 255, 255, .7);
     height: 500px;
     background: $theme-green;
   }
-  &__icon {
-    &-back {
-      position: absolute;
-      top: 30px;
-      left: 24px;
-  
-      font-size: 32px;
-      color: white;
-    }
-    &-settings {
-      @extend .profile__icon-back;
-      left: unset;
-      right: 24px;
-      font-weight: 700;
-    }
-  }
   &__avatar {
     position: absolute;
     left: 24px;

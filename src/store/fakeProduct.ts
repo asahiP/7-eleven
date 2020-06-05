@@ -8,7 +8,8 @@ const fakeProduct: Products[] = [
     price: 29.9,
     isSelfFetch: true,
     delay: null,
-    canHeating: false
+    canHeating: false,
+    isHot: false,
   },
   {
     id: 0,
@@ -19,18 +20,20 @@ const fakeProduct: Products[] = [
     price: 28,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
-    name: '汤力美式（冷）',
+    name: '汤力美式-冷',
     description: '口感丰富，颜值高，一款不一样的咖啡。',
     pic: '',
     reviews: [],
     price: 25,
     isSelfFetch: true,
     delay: null,
-    canHeating: false
+    canHeating: false,
+    isHot: false,
   },
   {
     id: 0,
@@ -41,7 +44,8 @@ const fakeProduct: Products[] = [
     price: 15,
     isSelfFetch: true,
     delay: [1, 3],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -52,7 +56,8 @@ const fakeProduct: Products[] = [
     price: 39.9,
     isSelfFetch: true,
     delay: [5, 8],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -63,7 +68,8 @@ const fakeProduct: Products[] = [
     price: 9.72,
     isSelfFetch: true,
     delay: [1, 3],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -74,7 +80,8 @@ const fakeProduct: Products[] = [
     price: 38,
     isSelfFetch: true,
     delay: [5, 8],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -85,7 +92,8 @@ const fakeProduct: Products[] = [
     price: 108,
     isSelfFetch: true,
     delay: null,
-    canHeating: false
+    canHeating: false,
+    isHot: false,
   },
   {
     id: 0,
@@ -96,7 +104,8 @@ const fakeProduct: Products[] = [
     price: 58,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -107,7 +116,8 @@ const fakeProduct: Products[] = [
     price: 62,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -118,7 +128,8 @@ const fakeProduct: Products[] = [
     price: 13,
     isSelfFetch: true,
     delay: [1, 3],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -129,7 +140,8 @@ const fakeProduct: Products[] = [
     price: 18,
     isSelfFetch: true,
     delay: [1, 3],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -140,7 +152,8 @@ const fakeProduct: Products[] = [
     price: 35,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -151,7 +164,8 @@ const fakeProduct: Products[] = [
     price: 48,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -162,7 +176,8 @@ const fakeProduct: Products[] = [
     price: 48,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
   {
     id: 0,
@@ -173,11 +188,13 @@ const fakeProduct: Products[] = [
     price: 88,
     isSelfFetch: true,
     delay: [3, 5],
-    canHeating: true
+    canHeating: true,
+    isHot: false,
   },
 ].map((item, index) => {
   item.id = 1010100 + index
   item.pic = require(`@public/img/products/${index + 1}.webp`).default
+  item.isHot = Math.random() > 0.5
 
   return item
 })

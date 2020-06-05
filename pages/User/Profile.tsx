@@ -1,6 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { $toast } from '@/components/Toast'
+
 
 interface Props {
   userInfo: UserInfo
@@ -23,10 +25,10 @@ function ConnectedProfile ({
   const { name, avatar, description, point, balance } = userInfo
   return (
     <div className="profile__wapper">
-      <span className="profile__icon-back" onClick={goBack}>
+      <span className="common__back" onClick={goBack}>
         <span className="common__icon common__icon--arrow-left"></span>
       </span>
-      <span className="profile__icon-settings">
+      <span className="common__settings" onClick={() => $toast('正在施工中')}>
         <span className="common__icon common__icon--settings"></span>
       </span>
       <div className="profile__avatar">

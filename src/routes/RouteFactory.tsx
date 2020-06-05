@@ -8,13 +8,14 @@ export default function RouteFactory (routes: RouteConfig[], props = {}, rootPat
     <Switch>
       {
         routes.map((RouteConfig, key) => {
-          const { path, authname, component: View, exact, children, redirect } = RouteConfig
+          const { path, name, component: View, exact, children, redirect, resetScroll } = RouteConfig
           const resolvedPath = rootPath + path
           const routerView = Array.isArray(children) && children.length > 0
             ? function Routes (props = {}) {
               return RouteFactory(children, props, resolvedPath)
             }
             : null
+          const shouldReset = resetScroll || true
             
           if (redirect !== undefined) {
             return (
@@ -31,7 +32,10 @@ export default function RouteFactory (routes: RouteConfig[], props = {}, rootPat
               key={key}
               path={resolvedPath}
               exact={exact}
-              render={() => (<View {...props} routerView={routerView}/>)}
+              render={() => {
+                shouldReset && window.scrollTo(0, 0)
+                return (<View {...props} routerView={routerView}/>)
+              }}
             />
           )
         })

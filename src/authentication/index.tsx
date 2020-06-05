@@ -7,14 +7,14 @@ interface Config {
   unAuth?: ComponentConstructor | string
 }
 
-type Rule = () => boolean
+type Rule = (props: any) => boolean
 
 /** 需要鉴权组件命名规范 withAuth{Rule?} needAuth{Component} */
 /** config<unAuth> 可以为 React 组件或重定向路径 */
 export function requireAuth (rule: Rule, config?: Config) {
   return function withAuth (View: ComponentConstructor) {
     return function Authentication (props: any) {
-      if (rule()) {
+      if (rule(props)) {
         return (<View {...props} />)
       } else {
         const { unAuth: UnAuth } = config

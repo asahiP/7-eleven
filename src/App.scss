@@ -84,6 +84,9 @@ a {
     &--arrow-top:before {
       content: "\e758";
     }
+    &--location:before {
+      content: "\e614";
+    }
   }
   &__nav {
     &-wapper {
@@ -199,5 +202,19 @@ a {
     &::before {
       display: none;
     }
+  }
+  &__back {
+    position: absolute;
+    top: 30px;
+    left: 24px;
+
+    font-size: 32px;
+    color: white;
+  }
+  &__settings {
+    @extend .common__back;
+    left: unset;
+    right: 24px;
+    font-weight: 700;
   }
 }
