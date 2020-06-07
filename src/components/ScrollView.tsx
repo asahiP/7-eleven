@@ -8,6 +8,7 @@ interface Props {
   style?: React.CSSProperties
   scrollTop?: number
   scrollLeft?: number
+  resize?: number
 }
 
 export default function ScrollView ({
@@ -17,11 +18,12 @@ export default function ScrollView ({
   style,
   scrollTop,
   scrollLeft,
+  resize
 }: Props): JSX.Element {
   const wapperStyle = Object.assign({}, style, { overflow: 'hidden' })
   const [contentStyle, setContentStyle] = useState({
     overflow: 'scroll'
-  })
+  } as React.CSSProperties)
   const wapper: React.MutableRefObject<HTMLDivElement> = useRef(null)
   const content: React.MutableRefObject<HTMLDivElement> = useRef(null)
   const bundle = (e: React.UIEvent) => {
@@ -36,7 +38,7 @@ export default function ScrollView ({
       width: offsetWidth + 20,
       height: offsetHeight + 20
     }))
-  }, [])
+  }, [resize])
 
   useEffect(() => {
     const { current } = content

@@ -1,8 +1,13 @@
-import { INIT_FROM_PERSISTED } from '@/constants'
+import {
+  INIT_FROM_PERSISTED,
+  ADD_TO_CART,
+  REMOVE_FROM_CART
+} from '@/constants'
+
 interface State {
   userInfo: UserInfo
   oder: Oder[]
-  cart: Products[]
+  cart: number[]
   mapCartToCount: { [key: string]: number }
 }
 
@@ -22,6 +27,10 @@ interface Action {
   payload: { [key: string]: any }
 }
 
+interface ActionMap {
+  [key: string]: () => State
+}
+
 const initialState: State = {
   userInfo: {
     name: '京酱肉丝',
@@ -39,10 +48,52 @@ const initialState: State = {
 }
 
 export default function rootReducer (state = initialState, action: Action): State {
-  switch (action.type) {
-    case INIT_FROM_PERSISTED:
+  const actionMap: ActionMap = {
+    [INIT_FROM_PERSISTED] () {
       return Object.assign({}, state, action.payload)
-    default:
-      return state
+    },
+    [ADD_TO_CART] () {
+      const mapCartToCount = Object.assign({}, state.mapCartToCount)
+      const id = action.payload.id
+      const cart = state.cart.concat()
+
+      if (id in mapCartToCount) {
+        mapCartToCount[id]++
+      } else {
+        mapCartToCount[id] = 1
+      }
+
+      if (!cart.includes(id)) {
+        cart.push(id)
+      }
+
+      return Object.assign({}, state, {
+        cart,
+        mapCartToCount
+      })
+    },
+    [REMOVE_FROM_CART] () {
+      const mapCartToCount = Object.assign({}, state.mapCartToCount)
+      const id = action.payload.id
+      let cart = state.cart.concat()
+
+      mapCartToCount[id]--
+
+      if (mapCartToCount[id] <= 0) {
+        delete mapCartToCount[id]
+        cart = cart.filter(item => item != id)
+      }
+
+      return Object.assign({}, state, {
+        cart,
+        mapCartToCount
+      })
+    }
   }
+
+  const matchedAction = actionMap[action.type]
+
+  return typeof matchedAction === 'function'
+    ? matchedAction()
+    : state
 }

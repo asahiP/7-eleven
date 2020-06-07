@@ -6,7 +6,6 @@ import Home from '@pages/Home/Home'
 import Detail from '@pages/Detail/Detail'
 import User from '@pages/User/User'
 import Markets from '@pages/Markets/Markets'
-import { useHistory } from 'react-router-dom'
 
 const routes: RouteConfig[] = [
   {
@@ -26,14 +25,13 @@ const routes: RouteConfig[] = [
     component: User,
   },
   {
-    path: '/markets',
+    path: '/markets/:nav',
     name: 'markets',
-    component: Markets
+    component: Markets,
   },
   {
-    path: '/cart',
-    name: 'cart',
-    component: Markets
+    path: '/markets',
+    redirect: '/markets/0',
   },
 ]
 
