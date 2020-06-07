@@ -31,10 +31,14 @@ export default function NavView ({
     let { target } = e
     let key: string = null
 
-    while (!(key = (target as HTMLLIElement).getAttribute('data-key')) && (target as HTMLElement).parentNode) {
+    while (
+      (target as HTMLLIElement).getAttribute
+      && !(key = (target as HTMLLIElement).getAttribute('data-key'))
+      && (target as HTMLElement).parentNode
+    ) {
       target = (target as HTMLElement).parentNode
     }
-    setIndex(parseInt(key))
+    key && setIndex(parseInt(key))
   }
 
   useEffect(() => {

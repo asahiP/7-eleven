@@ -20,6 +20,10 @@ body {
   padding: 0;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 * {
   font-family: $font-family;
   user-select: none;
@@ -191,18 +195,6 @@ a {
       transform: rotate(90deg);
     }
   }
-  &__decrease {
-    @extend .common__increase;
-
-    background: #dfdfdf;
-
-    &::after {
-      background: $font-color-placeholder;
-    }
-    &::before {
-      display: none;
-    }
-  }
   &__back {
     position: absolute;
     top: 30px;
@@ -216,5 +208,16 @@ a {
     left: unset;
     right: 24px;
     font-weight: 700;
+  }
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+
+    background: rgba(black, .7);
   }
 }

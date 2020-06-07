@@ -1,0 +1,37 @@
+
+.cart {
+  &__wapper {
+    width: 100%;
+    height: 100%;
+
+    background: $theme-green;
+  }
+  &__back {
+    position: absolute;
+    width: 100%;
+    height: 30 + $border-radius * 2;
+
+    border-bottom-left-radius: $border-radius * 2;
+    border-bottom-right-radius: $border-radius * 2;
+
+    background: white;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 14px;
+
+      width: 67px;
+      height: 6px;
+
+      margin: auto;
+
+      border-radius: 6px;
+
+      background: #d7d7d7;
+
+      content: '';
+    }
+  }
+}

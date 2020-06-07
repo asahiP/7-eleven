@@ -42,6 +42,8 @@ declare interface Products {
   canHeating: boolean
   /** 是否热门产品 */
   isHot: boolean
+  /** 是否售馨 */
+  isSoldout: boolean
 }
 
 declare interface Oder {

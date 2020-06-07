@@ -10,6 +10,7 @@ const fakeProduct: Products[] = [
     delay: null,
     canHeating: false,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -22,6 +23,7 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -34,6 +36,7 @@ const fakeProduct: Products[] = [
     delay: null,
     canHeating: false,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -46,6 +49,7 @@ const fakeProduct: Products[] = [
     delay: [1, 3],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -58,6 +62,7 @@ const fakeProduct: Products[] = [
     delay: [5, 8],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -70,6 +75,7 @@ const fakeProduct: Products[] = [
     delay: [1, 3],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -82,6 +88,7 @@ const fakeProduct: Products[] = [
     delay: [5, 8],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -94,6 +101,7 @@ const fakeProduct: Products[] = [
     delay: null,
     canHeating: false,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -106,6 +114,7 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -118,6 +127,7 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -130,6 +140,7 @@ const fakeProduct: Products[] = [
     delay: [1, 3],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -142,6 +153,7 @@ const fakeProduct: Products[] = [
     delay: [1, 3],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -154,6 +166,7 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -166,6 +179,7 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -178,6 +192,7 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
   {
     id: 0,
@@ -190,13 +205,21 @@ const fakeProduct: Products[] = [
     delay: [3, 5],
     canHeating: true,
     isHot: false,
+    isSoldout: false,
   },
 ].map((item, index) => {
   item.id = 1010100 + index
   item.pic = require(`@public/img/products/${index + 1}.webp`).default
-  item.isHot = Math.random() > 0.5
+  item.isHot = Math.random() < 0.4
+  item.isSoldout = Math.random() < 0.1
 
   return item
 })
 
 export default fakeProduct
+export const productMap: { [key: number]: Products } = fakeProduct.reduce((prev: any, current) => {
+  const { id, ...props } = current
+  prev[id] = props
+
+  return prev
+}, {})
