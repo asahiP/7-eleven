@@ -1,7 +1,9 @@
 import {
   INIT_FROM_PERSISTED,
   ADD_TO_CART,
-  REMOVE_FROM_CART
+  REMOVE_FROM_CART,
+  UPDATE_LOCATION,
+  UPDATE_TIME
 } from '@/constants'
 
 interface State {
@@ -36,7 +38,7 @@ const initialState: State = {
     name: '京酱肉丝',
     avatar: require('@public/img/fake_avatar.jpg').default,
     location: '上海浦东新区店(NO.1032)',
-    time: '8:30',
+    time: '08:30',
     description: '这个人很懒，什么也没有留下...',
     point: 1450,
     balance: 214.5,
@@ -87,6 +89,26 @@ export default function rootReducer (state = initialState, action: Action): Stat
       return Object.assign({}, state, {
         cart,
         mapCartToCount
+      })
+    },
+    [UPDATE_LOCATION] () {
+      const userInfo = Object.assign({}, state.userInfo)
+      const { local } = action.payload
+
+      userInfo['location'] = local
+
+      return Object.assign({}, state, {
+        userInfo
+      })
+    },
+    [UPDATE_TIME] () {
+      const userInfo = Object.assign({}, state.userInfo)
+      const { time } = action.payload
+
+      userInfo['time'] = time
+
+      return Object.assign({}, state, {
+        userInfo
       })
     }
   }

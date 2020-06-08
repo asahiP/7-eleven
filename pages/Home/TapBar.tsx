@@ -8,7 +8,7 @@ export default function TapBar () {
   return (
     <ul className="tapbar__wapper">
       <li>
-        <Link to="/">
+        <Link to="/markets/cart">
           <div className="tapbar__icon">
             <img src={CartIcon} alt="icon" width="100%"/>
           </div>
