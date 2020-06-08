@@ -1,6 +1,6 @@
 import { INIT_FROM_PERSISTED } from '@/constants'
 
-const STATE_KEY: string[] = ['oder', 'cart', 'mapCartToCount']
+const STATE_KEY: string[] = []
 const PERSISTED_STATE = 'PERSISTED_STATE'
 
 export function persistedStateMiddleware (store: any) {
@@ -19,7 +19,9 @@ export function persistedStateMiddleware (store: any) {
       prev[current] = newState[current]
       return prev
     }, {})
-    const stringifyState = JSON.stringify(needToPersist)
+    const stringifyState = STATE_KEY.length
+      ? JSON.stringify(needToPersist)
+      : JSON.stringify(newState)
 
     if (stringifyState !== cache) {
       cache = stringifyState

@@ -57,7 +57,7 @@ function connectedMarkets ({ userInfo, cart }: Props) {
   const [bannerPic, setBannerPic] = useState('')
   const [resize, setResize] = useState(0)
 
-  const isCartNotEmpty = cart.length === 0
+  const isCartEmpty = cart.length === 0
   const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
@@ -71,15 +71,16 @@ function connectedMarkets ({ userInfo, cart }: Props) {
   }, [nav])
 
   const handleResize = () => { setTimeout(() => setResize(Date.now()), 300) }
-  useEffect(handleResize, [isCartNotEmpty])
+  useEffect(handleResize, [isCartEmpty])
 
   return (
     <>
+      <div className="markets__background"></div>
       <div
         className={classNames(
           'markets__wapper',
           {
-            'markets__wapper--not-empty': !isCartNotEmpty,
+            'markets__wapper--not-empty': !isCartEmpty,
             'markets__wapper--should-hide': isCartPage
           }
         )}
@@ -94,7 +95,7 @@ function connectedMarkets ({ userInfo, cart }: Props) {
                 <span className="common__icon common__icon--location"></span>
               </span>
               {' '}
-              {computedLocation}
+              <span className="markets__header-name">{computedLocation}</span>
               <span className="markets__header-arrow">
                 <span className="common__icon common__icon--arrow-left"></span>
               </span>
@@ -150,17 +151,21 @@ function connectedMarkets ({ userInfo, cart }: Props) {
         </div>
       </div>
       {
-        !isCartPage
+        !isCartPage && !isCartEmpty
           ? <CartMini onClick={() => replace('/markets/cart')}/>
           : null
       }
-      <Cart/>
+      {
+        isCartPage
+          ? <Cart onClick={() => setIsActive(true)}/>
+          : null
+      }
       {
         isActive
         ? <div className="common__mask" onClick={() => setIsActive(false)}></div>
         : null
       }
-      <Picker isActive={isActive}/>
+      <Picker isActive={isActive} time={time} onChange={() => setIsActive(false)}/>
     </>
   )
 }

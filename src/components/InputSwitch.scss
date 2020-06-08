@@ -1,0 +1,50 @@
+@import '~@/variables.scss';
+
+$input-switch__wapper-width: 145px;
+
+.input-switch {
+  &__wapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: $input-switch__wapper-width;
+    height: 33px;
+
+    border: 1px solid rgba(white, .2);
+    border-radius: 33px;
+
+  }
+  &__slider {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 80px;
+    height: 35px;
+
+    border-radius: 33px;
+    background: white;
+    transition: transform .25s ease-out;
+
+    &--right {
+      transform: translate3d($input-switch__wapper-width - 80 + 3, 0, 0);
+    }
+  }
+  &__text {
+    float: left;
+    display: block;
+
+    width: 50%;
+    z-index: 2;
+
+    font-size: 18px;
+    text-align: center;
+    color: white;
+
+    transition: color .25s ease-out;
+
+    &--current {
+      color: $theme-green;
+    }
+  }
+}

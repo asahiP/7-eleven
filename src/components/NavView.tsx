@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { classNames } from '@/utils'
+import { classNames, getAttribute } from '@/utils'
 
 import ScrollView from './ScrollView'
 import Slideshow from './Slideshow'
@@ -28,16 +28,9 @@ export default function NavView ({
   const [initial, setInitial] = useState(false)
 
   const handleClick = (e: React.UIEvent) => {
-    let { target } = e
-    let key: string = null
+    const { target } = e
+    const key = getAttribute(target, 'data-key')
 
-    while (
-      (target as HTMLLIElement).getAttribute
-      && !(key = (target as HTMLLIElement).getAttribute('data-key'))
-      && (target as HTMLElement).parentNode
-    ) {
-      target = (target as HTMLElement).parentNode
-    }
     key && setIndex(parseInt(key))
   }
 

@@ -91,6 +91,9 @@ a {
     &--location:before {
       content: "\e614";
     }
+    &--correct:before {
+      content: "\e609";
+    }
   }
   &__nav {
     &-wapper {

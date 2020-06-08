@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { classNames } from '@/utils'
+import { connect } from 'react-redux'
 
 import Status from '@/components/Status'
+import { addToCart } from '@/actions'
+import { $toast } from '@/components/Toast'
 
 interface Props {
   item: Products
   index: number
   current: number
+  addToCart: (id: number) => void
 }
 
-export default function ProductsItem ({
+function connectedProductsItem ({
   item,
   index,
   current,
+  addToCart
 }: Props) {
-  const { name, pic, price, isSelfFetch, delay, canHeating, id } = item
+  const { name, pic, price, id } = item
   const [className, setClassName] = useState('')
-
+  const handleClick = () => {
+    addToCart(id)
+    $toast('已添加到购物车')
+  }
 
   useEffect(() => {
     setClassName(classNames(
@@ -42,8 +50,14 @@ export default function ProductsItem ({
           <Status {...item}/>
           <span className="products__item-card__info-price">{price.toFixed(2)}</span>
         </div>
-        <button className="products__item-card__add2cart"></button>
+        <button className="products__item-card__add2cart" onClick={handleClick}></button>
       </div>
     </div>
   )
 }
+
+const mapDispatchToProps = (dispatch: any) => ({
+  addToCart: (id: number) => dispatch(addToCart(id))
+})
+const ProductsItem = connect(null, mapDispatchToProps)(connectedProductsItem)
+export default ProductsItem

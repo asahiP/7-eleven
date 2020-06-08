@@ -13,12 +13,19 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
 }
 
 .markets {
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: $theme-green;
+  }
   &__wapper {
     position: absolute;
 
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
 
     background: white;
 
@@ -51,7 +58,7 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 250px;
+      max-width: 300px;
       height: 100%;
 
       margin: auto;
@@ -60,6 +67,12 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
       font-size: 24px;
       text-align: center;
       color: $font-color-main;
+
+      & > *:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     &-location {
       color: $theme-green;
@@ -72,13 +85,20 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
       font-size: 16px;
       vertical-align: middle;
       color: $font-color-placeholder;
-      transform: rotate(180deg) translateY(1px);
+      transform: rotate(180deg) translateY(-1px);
     }
     &-time {
       font-size: 16px;
     }
     &-info {
       color: $font-color-placeholder;
+    }
+    &-name {
+      display: inline-block;
+      max-width: 230px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   &__content {
