@@ -151,21 +151,16 @@ function connectedMarkets ({ userInfo, cart }: Props) {
         </div>
       </div>
       {
-        !isCartPage && !isCartEmpty
-          ? <CartMini onClick={() => replace('/markets/cart')}/>
-          : null
+        !isCartPage && !isCartEmpty && (<CartMini onClick={() => replace('/markets/cart')}/>)
       }
       {
-        isCartPage
-          ? <Cart onClick={() => setIsActive(true)}/>
-          : null
+        isCartPage && (<Cart onClick={() => setIsActive(true)}/>)
       }
       {
-        isActive
-        ? <div className="common__mask" onClick={() => setIsActive(false)}></div>
-        : null
+        isActive && (<div className="common__mask" onClick={() => setIsActive(false)}></div>)
       }
       <Picker isActive={isActive} time={time} onChange={() => setIsActive(false)}/>
+      <div className="common__e-e"></div>
     </>
   )
 }

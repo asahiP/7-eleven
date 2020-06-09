@@ -1,6 +1,7 @@
 @import '~@/variables.scss';
 
 $input-switch__wapper-width: 145px;
+$input-switch__slider-width: $input-switch__wapper-width / 2 + 10;
 
 .input-switch {
   &__wapper {
@@ -19,15 +20,15 @@ $input-switch__wapper-width: 145px;
     position: absolute;
     top: -1px;
     left: -1px;
-    width: 80px;
-    height: 35px;
+    width: $input-switch__slider-width;
+    height: 36px;
 
     border-radius: 33px;
     background: white;
     transition: transform .25s ease-out;
 
     &--right {
-      transform: translate3d($input-switch__wapper-width - 80 + 3, 0, 0);
+      transform: translate3d($input-switch__wapper-width - $input-switch__slider-width + 3, 0, 0);
     }
   }
   &__text {

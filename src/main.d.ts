@@ -47,5 +47,24 @@ declare interface Products {
 }
 
 declare interface Oder {
-  
+  /** 订单号 */
+  id: string
+  /** 订单时间 */
+  date: number
+  /** 订单状态 */
+  status: 'untake'
+  /** 提货序号 */
+  num: string
+  /** 提货时间 */
+  time: string
+  /** 提货门店 */
+  location: string
+  /** 订单列表 */
+  cart: number[]
+  /** 商品件数 */
+  mapCartToCount: { [key: number]: number }
+  /** 折扣满减 */
+  discount: string
+  /** 实付 */
+  totalPrice: string
 }

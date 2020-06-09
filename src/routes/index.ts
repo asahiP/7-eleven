@@ -6,6 +6,8 @@ import Home from '@pages/Home/Home'
 import Detail from '@pages/Detail/Detail'
 import User from '@pages/User/User'
 import Markets from '@pages/Markets/Markets'
+import Code from '@pages/Code/Code'
+import Payment from '@pages/Code/Payment'
 
 const routes: RouteConfig[] = [
   {
@@ -33,6 +35,26 @@ const routes: RouteConfig[] = [
     path: '/markets',
     redirect: '/markets/0',
   },
+  {
+    path: '/code/:id',
+    /** 取货码 */
+    name: 'code',
+    component: Code
+  },
+  {
+    path: '/code/payment',
+    /** 付款码 */
+    name: 'payment',
+    component: Payment
+  },
+  {
+    path: '/code',
+    redirect: '/code/payment',
+  },
+  {
+    path: '*',
+    redirect: '/'
+  }
 ]
 
 export default function Routes () {
