@@ -65,6 +65,10 @@ $cart__back-height: 30 + $border-radius * 2;
     font-size: 30px;
   }
   &__content {
+    @keyframes slideIn {
+      from { transform: translate3d(0, 20px, 0); opacity: .2; }
+      to { transform: translate3d(0, 0, 0); opacity: 1; }
+    }
     position: absolute;
     padding: 0 24px;
     padding-top: 100px;
@@ -76,6 +80,15 @@ $cart__back-height: 30 + $border-radius * 2;
 
     background: $theme-green;
     box-sizing: border-box;
+
+    @for $n from 1 to 9 {
+      & > *:nth-child(#{$n}) {
+        opacity: 0;
+
+        animation: slideIn .25s ease-out forwards;
+        animation-delay: .1s * ($n - 1);
+      }
+    }
   }
   &__row {
     display: flex;

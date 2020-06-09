@@ -2,7 +2,8 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   UPDATE_LOCATION,
-  UPDATE_TIME
+  UPDATE_TIME,
+  GENERATE_ORDER
 } from '@/constants'
 
 export function addToCart (id: number) {
@@ -19,4 +20,8 @@ export function updateLocation (local: string) {
 
 export function updateTime (time: string) {
   return { type: UPDATE_TIME, payload: { time } }
+}
+
+export function generateOrder (oder: Oder) {
+  return { type: GENERATE_ORDER, payload: { oder } }
 }

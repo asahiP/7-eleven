@@ -199,6 +199,7 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
       }
     }
     &-img {
+      position: relative;
       float: left;
       width: 95px;
       height: 95px;
@@ -274,6 +275,9 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
           content: '￥';
         }
       }
+      &--soldout {
+        color: $font-color-placeholder;
+      }
     }
     &-counter {
       position: absolute;
@@ -346,6 +350,54 @@ $markets__content-right-width: $UI-size - $markets__content-left-width;
       }
       &--hide {
         visibility: hidden;
+      }
+    }
+    &-soldout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .6);
+
+      &-circle {
+        display: block;
+        position: absolute;
+        width: 55px;
+        height: 55px;
+
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+      &-text {
+        display: inline-block;
+        font-size: 18px;
+        color: white;
+        transform: rotate(-15deg);
+      }
+      &-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 5px;
+        bottom: 0;
+        
+        width: 80px;
+        height: 25px;
+
+        border: none;
+        border-radius: 25px;
+        outline: none;
+
+        font-size: 14px;
+        color: $theme-orange;
+
+        background: #fff1e0;
       }
     }
   }

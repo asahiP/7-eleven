@@ -24,7 +24,7 @@ export default function TapBar () {
         </Link>
       </li>
       <li>
-        <Link to="/">
+        <Link to="/code/payment">
           <div className="tapbar__icon">
             <img src={QRCodeIcon} alt="icon" width="100%"/>
           </div>

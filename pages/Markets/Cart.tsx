@@ -4,12 +4,15 @@ import { connect } from 'react-redux'
 
 import { productMap } from '@/store/fakeProduct'
 import InputSwitch from '@/components/InputSwitch'
+import { generateOrder } from '@/actions'
+import { getRandStr } from '@/utils'
 
 interface Props {
   cart: number[]
   mapCartToCount: { [key: number]: number }
   userInfo: UserInfo
   onClick: (e: React.UIEvent) => void
+  generateOrder: (oder: Oder) => void
 }
 
 interface UserInfo {
@@ -31,13 +34,32 @@ const NotEmptyView = ({
   cart,
   mapCartToCount,
   userInfo,
-  onClick: handleClick
+  onClick: handleClick,
+  generateOrder
 }: Props) => {
+  const { push } = useHistory()
   const { location, time } = userInfo
   const totalPrice = cart.reduce((prev: number, current) => {
     const { price } = productMap[current]
     return prev + (price * mapCartToCount[current])
   }, 0)
+  const discount = (totalPrice / 0.8 - totalPrice).toFixed(2)
+  const handleRequestOder = () => {
+    const oder: Oder = {
+      id: '1' + getRandStr(16, true),
+      date: Date.now(),
+      status: 'untake',
+      num: getRandStr(4, true),
+      time,
+      location,
+      cart: cart.concat(),
+      mapCartToCount: Object.assign({}, mapCartToCount),
+      discount,
+      totalPrice: totalPrice.toFixed(2)
+    }
+    generateOrder(oder)
+    push(`/code/${oder.id}`)
+  }
 
   return (
     <div className="cart__content">
@@ -89,7 +111,7 @@ const NotEmptyView = ({
       <div className="cart__row">
         <span className="cart__info">折扣满减</span>
         <span className="cart__item-price">
-          {(totalPrice / 0.8 - totalPrice).toFixed(2)}
+          {discount}
         </span>
       </div>
       <div className="cart__row">
@@ -107,7 +129,7 @@ const NotEmptyView = ({
           <span className="cart__total-num--before">{(totalPrice / 0.8).toFixed(2)}</span>
         </span>
       </div>
-      <button className="cart__button">立即结算</button>
+      <button className="cart__button" onClick={handleRequestOder}>立即结算</button>
     </div>
   )
 }
@@ -129,5 +151,8 @@ function connectedCart (props: Props) {
 }
 
 const mapStateToProps = ({ cart, mapCartToCount, userInfo }: any) => ({ cart, mapCartToCount, userInfo })
-const Cart = connect(mapStateToProps)(connectedCart)
+const mapDispatchToProps = (dispatch: any) => ({
+  generateOrder: (oder: Oder) => (dispatch(generateOrder(oder)))
+})
+const Cart = connect(mapStateToProps, mapDispatchToProps)(connectedCart)
 export default Cart

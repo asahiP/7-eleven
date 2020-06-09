@@ -3,7 +3,8 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   UPDATE_LOCATION,
-  UPDATE_TIME
+  UPDATE_TIME,
+  GENERATE_ORDER
 } from '@/constants'
 
 interface State {
@@ -109,6 +110,13 @@ export default function rootReducer (state = initialState, action: Action): Stat
 
       return Object.assign({}, state, {
         userInfo
+      })
+    },
+    [GENERATE_ORDER] () {
+      return Object.assign({}, state, {
+        oder: action.payload.oder,
+        cart: [],
+        mapCartToCount: {}
       })
     }
   }

@@ -6,6 +6,7 @@ import { classNames } from '@/utils'
 import { addToCart, removeFromCart } from '@/actions'
 
 import Flipping from '@/components/Flipping'
+import { $toast } from '@/components/Toast'
 
 interface Props {
   product: Products
@@ -13,6 +14,18 @@ interface Props {
   addToCart: (id: number) => void
   removeFromCart: (id: number) => void
 }
+
+const Soldout = () => (
+  <div className="markets__list-soldout">
+    <span className="markets__list-soldout-circle"></span>
+    <span className="markets__list-soldout-text">售馨</span>
+  </div>
+)
+const SoldoutButton = () => (
+  <button className="markets__list-soldout-button" onClick={() => $toast('正在施工中')}>
+    提醒补货
+  </button>
+)
 
 function connectedListItem ({
   product,
@@ -28,6 +41,9 @@ function connectedListItem ({
       <Link to={`/detail/${id}`}>
         <div className="markets__list-img">
           <img src={pic} alt={name} height="100%"/>
+          {
+            isSoldout && <Soldout/>
+          }
         </div>
       </Link>
       <div className="markets__list-info">
@@ -37,23 +53,36 @@ function connectedListItem ({
           {name}
         </span>
         <span className="markets__list-description">{description}</span>
-        <span className="markets__list-price">
+        <span
+          className={
+            classNames(
+              'markets__list-price',
+              { 'markets__list-price--soldout': isSoldout }
+            )
+          }
+        >
           {price.toFixed(2)}
           <span className="markets__list-price--before">{(price / 0.8).toFixed(2)}</span>
         </span>
-        <div className="markets__list-counter">
-          <button
-            className={
-              classNames(
-                'markets__list-counter--decrease',
-                { 'markets__list-counter--hide': count === 0 }
+        {
+          isSoldout
+            ? <SoldoutButton/>
+            : (
+                <div className="markets__list-counter">
+                  <button
+                    className={
+                      classNames(
+                        'markets__list-counter--decrease',
+                        { 'markets__list-counter--hide': count === 0 }
+                      )
+                    }
+                    onClick={() => removeFromCart(id)}
+                  ></button>
+                  <Flipping value={count} className={classNames({ 'markets__list-counter--hide': count === 0 })}/>
+                  <button className="markets__list-counter--increase" onClick={() => addToCart(id)}></button>
+                </div>
               )
-            }
-            onClick={() => removeFromCart(id)}
-          ></button>
-          <Flipping value={count} className={classNames({ 'markets__list-counter--hide': count === 0 })}/>
-          <button className="markets__list-counter--increase" onClick={() => addToCart(id)}></button>
-        </div>
+        }
       </div>
     </div>
   )
