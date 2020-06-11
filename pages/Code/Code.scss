@@ -1,1 +1,227 @@
 @import '~@/variables.scss';
+
+
+.code {
+  &__back {
+    color: $font-color-main;
+  }
+  &__title {
+    position: absolute;
+    top: 60px;
+    left: 24px;
+    font-size: 29px;
+    font-weight: 700;
+    color: $font-color-main;
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+
+    width: $UI-size - 48px;
+
+    margin: 0 auto;
+    margin-bottom: 24px;
+    padding: 35px 24px 20px 24px;
+
+    border: 1px solid #f4f4f4;
+    border-radius: $border-radius;
+    box-shadow: 0 5px 8px 5px rgba(181, 181, 181, 0.15);
+    box-sizing: border-box;
+  }
+  &__qrcode {
+    position: relative;
+
+    width: 250px;
+    height: 250px;
+
+    margin-bottom: 15px;
+    &-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      width: 240px;
+      height: 240px;
+
+      margin: auto;
+    }
+  }
+  &__num {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f9aa38;
+  }
+  &__description {
+    margin-top: 10px;
+    font-size: 17px;
+    color: $font-color-placeholder;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 15px 0;
+  }
+  &__location {
+    width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 22px;
+    font-weight: 700;
+    color: $font-color-main;
+    &-icon {
+      font-weight: 500;
+      color: $theme-green;
+    }
+  }
+  &__arrow {
+    display: inline-block;
+    font-size: 16px;
+    color: $font-color-placeholder;
+
+    transform: scaleX(-1);
+  }
+  &__info {
+    font-size: 18px;
+    color: $font-color-sub;
+  }
+  &__time {
+    font-size: 20px;
+    font-weight: 700;
+    color: $theme-green;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    &-wapper {
+      position: relative;
+
+      width: 100%;
+      margin-top: 20px;
+      border-top: 1px dashed #f4f4f4;
+
+
+      &--pseudo {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: -24px;
+
+        width: 20px;
+        height: 20px;
+
+        border: 1px solid #f4f4f4;
+        border-radius: 50%;
+
+        background: #f3f3f3;
+
+        transform: translate3d(-50%, -50%, 0);
+
+        content: '';
+      }
+      &::after {
+        @extend .code__list-wapper--pseudo;
+      }
+      &::before {
+        @extend .code__list-wapper--pseudo;
+
+        left: unset;
+        right: -24px;
+        transform: translate3d(50%, -50%, 0);
+      }
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      padding: 15px 0;
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      width: 215px;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &-name {
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 20px;
+      color: $font-color-main;
+    }
+    &-description {
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 16px;
+      color: $font-color-placeholder;
+    }
+    &-count {
+      margin-left: 30px;
+      font-size: 20px;
+      color: $font-color-main;
+    }
+    &-price {
+      position: absolute;
+      right: 0;
+
+      font-size: 20px;
+      color: $font-color-main;
+
+      &::before {
+        font-size: 14px;
+        content: '￥';
+      }
+    }
+  }
+  &__discount {
+    font-size: 20px;
+    color: $theme-orange;
+
+    &::before {
+      font-size: 14px;
+      content: '￥';
+    }
+  }
+  &__total-price {
+    display: flex;
+    align-items: flex-end;
+    font-size: 16px;
+    color: $font-color-main;
+
+    & > *:nth-child(2) {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 30px;
+      color: $theme-orange;
+
+      transform: translate3d(0, 2px, 0);
+
+      &::before {
+        font-size: 16px;
+        content: '￥';
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import User from '@pages/User/User'
 import Markets from '@pages/Markets/Markets'
 import Code from '@pages/Code/Code'
 import Payment from '@pages/Code/Payment'
+import Oder from '@pages/Oder/Oder'
 
 const routes: RouteConfig[] = [
   {
@@ -36,20 +37,28 @@ const routes: RouteConfig[] = [
     redirect: '/markets/0',
   },
   {
-    path: '/code/:id',
-    /** 取货码 */
-    name: 'code',
-    component: Code
-  },
-  {
     path: '/code/payment',
     /** 付款码 */
     name: 'payment',
     component: Payment
   },
   {
+    path: '/code/:id',
+    /** 取货码 */
+    name: 'code',
+    component: Code
+  },
+  {
     path: '/code',
     redirect: '/code/payment',
+  },
+  {
+    path: '/oder/:filter',
+    component: Oder,
+  },
+  {
+    path: '/oder',
+    redirect: '/oder/all'
   },
   {
     path: '*',

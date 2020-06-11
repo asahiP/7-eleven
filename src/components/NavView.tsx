@@ -7,6 +7,8 @@ import Slideshow from './Slideshow'
 interface Props {
   children: React.ReactNode
   nav: string[]
+  initialIndex?: number
+  onIndexChange?: (index: number) => void
 }
 
 interface RemadeChildren {
@@ -18,6 +20,8 @@ interface RemadeChildren {
 export default function NavView ({
   children,
   nav,
+  initialIndex,
+  onIndexChange: handleIndexChange
 }: Props) {
   const [index, setIndex] = useState(0)
   const navWapper = useRef(null as HTMLUListElement)
@@ -75,8 +79,11 @@ export default function NavView ({
           transform: `translate3d(${computedTranslate}px, -100%, 0)`,
           transition: initial ? 'transform .25s ease-out' : ''
         })
+        initial && handleIndexChange && handleIndexChange(index)
       })
   }, [index, initial])
+
+  useEffect(() => { initialIndex && setIndex(initialIndex) }, [initialIndex])
 
   return (
     <>

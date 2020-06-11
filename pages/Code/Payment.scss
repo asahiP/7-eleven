@@ -1,0 +1,84 @@
+@import '~@/variables.scss';
+
+
+.payment {
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+
+    width: $UI-size - 48px;
+
+    margin: 0 auto;
+    margin-bottom: 24px;
+    padding: 15px 24px 10px 24px;
+
+    border: 1px solid #f4f4f4;
+    border-radius: $border-radius;
+    box-shadow: 0 5px 8px 5px rgba(181, 181, 181, 0.15);
+    box-sizing: border-box;
+  }
+  &__qrcode {
+    position: relative;
+
+    width: 300px;
+    height: 300px;
+
+    margin-bottom: 15px;
+    &-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      width: 60vw;
+      height: 60vw;
+
+      margin: auto;
+    }
+  }
+  &__barcode {
+    width: 95%;
+    &-text {
+      margin-top: 0;
+      font-size: 21px;
+    }
+  }
+  &__description {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 21px;
+    color: $theme-orange;
+
+    & > *:first-child {
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 30px;
+
+      transform: scaleY(.8) translate3d(0, 1px, 0);
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &-name {
+      font-size: 21px;
+      font-weight: 700;
+      color: $font-color-main;
+    }
+    &-description {
+      font-size: 16px;
+      color: $font-color-placeholder;
+    }
+  }
+}

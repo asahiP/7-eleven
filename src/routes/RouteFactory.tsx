@@ -15,7 +15,9 @@ export default function RouteFactory (routes: RouteConfig[], props = {}, rootPat
               return RouteFactory(children, props, resolvedPath)
             }
             : null
-          const shouldReset = resetScroll || true
+          const shouldReset = typeof resetScroll === 'undefined'
+            ? true
+            : resetScroll
             
           if (redirect !== undefined) {
             return (

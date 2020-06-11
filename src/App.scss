@@ -94,6 +94,9 @@ a {
     &--correct:before {
       content: "\e609";
     }
+    &--barcode:before {
+      content: "\e628";
+    }
   }
   &__nav {
     &-wapper {
@@ -238,5 +241,49 @@ a {
     text-align: center;
     color: rgba(white, .5);
     background: $theme-green;
+  }
+  &__qrcod {
+    &-corner {
+      position: absolute;
+      
+      &--pseudo {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 20px;
+        height: 3px;
+
+        background: $theme-green;
+
+        content: '';
+      }
+      &::after {
+        @extend .common__qrcod-corner--pseudo;
+      }
+      &::before {
+        @extend .common__qrcod-corner--pseudo;
+        transform: rotate(90deg);
+        transform-origin: top left;
+      }
+
+      &:nth-child(2) {
+        right: 0;
+
+        transform: scaleX(-1);
+      }
+      &:nth-child(3) {
+        bottom: 0;
+
+        transform: scaleY(-1);
+      }
+      &:nth-child(4) {
+        bottom: 0;
+        right: 0;
+
+        transform: scale(-1);
+      }
+    }
   }
 }

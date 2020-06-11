@@ -38,7 +38,7 @@ export default function ScrollView ({
       width: offsetWidth + 20,
       height: offsetHeight + 20
     }))
-  }, [resize])
+  }, [resize, style])
 
   useEffect(() => {
     const { current } = content

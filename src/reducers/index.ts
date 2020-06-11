@@ -114,7 +114,7 @@ export default function rootReducer (state = initialState, action: Action): Stat
     },
     [GENERATE_ORDER] () {
       return Object.assign({}, state, {
-        oder: action.payload.oder,
+        oder: state.oder.concat(action.payload.oder),
         cart: [],
         mapCartToCount: {}
       })

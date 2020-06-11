@@ -47,7 +47,7 @@ export default function Home (): JSX.Element {
               <span className="home__content-entry-info--sub">在线点到店取</span>
             </div>
           </Link>
-          <Link to="/" className="home__content-entry--right">
+          <Link to="/oder/all" className="home__content-entry--right">
             <div className="home__content-entry-icon">
               <img src={rightIcon} alt="oder" width="100%"/>
             </div>
