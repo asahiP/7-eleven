@@ -16,7 +16,7 @@ export default function TapBar () {
         </Link>
       </li>
       <li>
-        <Link to="/">
+        <Link to="/scan">
           <div className="tapbar__scan tapbar__scan-icon">
             <span className="common__icon common__icon--scan"></span>
             <span className="tapbar__scan-info">扫码付款</span>
