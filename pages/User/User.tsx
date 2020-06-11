@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { $toast } from '@/components/Toast'
+import { Link } from 'react-router-dom'
 
 import './User.scss'
 import Profile from './Profile'
@@ -21,40 +22,50 @@ function ConnectedUser ({ oder }: Props) {
       <div className="user__wapper">
         <p className="user__oder-title">
           我的订单
-          <span className="user__oder-title-sub">
-            全部订单 {'>'}
-          </span>
+          <Link to="/oder/all">
+            <span className="user__oder-title-sub">
+              全部订单 {'>'}
+            </span>
+          </Link>
         </p>
         <div className="user__oder-box">
-          <div className="user__oder-box-item">
-            <div className="user__oder-box-icon">
-              <img src={Unpay} alt="unpay" width="100%"/>
+          <Link to="/oder/unpay">
+            <div className="user__oder-box-item">
+              <div className="user__oder-box-icon">
+                <img src={Unpay} alt="unpay" width="100%"/>
+              </div>
+              <span className="user__oder-box-title">待付款</span>
             </div>
-            <span className="user__oder-box-title">待付款</span>
-          </div>
-          <div className="user__oder-box-item">
-            <div className="user__oder-box-icon">
-              <img src={Untake} alt="untake" width="100%"/>
+          </Link>
+          <Link to="/oder/untake">
+            <div className="user__oder-box-item">
+              <div className="user__oder-box-icon">
+                <img src={Untake} alt="untake" width="100%"/>
+              </div>
+              <span className="user__oder-box-title">待取餐</span>
+              {
+                oder.length > 0
+                  ? <div className="user__oder-badge">{oder.length}</div>
+                  : null
+              }
             </div>
-            <span className="user__oder-box-title">待取餐</span>
-            {
-              oder.length > 0
-                ? <div className="user__oder-badge">{oder.length}</div>
-                : null
-            }
-          </div>
+          </Link>
+          <Link to="/oder/uncomment">
           <div className="user__oder-box-item">
             <div className="user__oder-box-icon">
               <img src={Uncomment} alt="uncomment" width="100%"/>
             </div>
             <span className="user__oder-box-title">待评价</span>
           </div>
+          </Link>
+          <Link to="/oder/after">
           <div className="user__oder-box-item">
             <div className="user__oder-box-icon">
               <img src={After} alt="after" width="100%"/>
             </div>
             <span className="user__oder-box-title">退款/售后</span>
           </div>
+          </Link>
         </div>
         <ul className="user__list" onClick={() => $toast('正在施工中')}>
           <li className="user__list-item">
