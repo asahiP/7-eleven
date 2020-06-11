@@ -59,8 +59,9 @@ function connectedOder ({ oder }: Props) {
                   : item.status === Filter[index]
               })
               const listItem = filtered.map((item, key) => {
-                const status = index > 0
-                  ? val
+                const statusIndex = Filter.indexOf(item.status)
+                const status = statusIndex > 0
+                  ? Nav[statusIndex]
                   : '已完成'
                 const totalCount = item.cart.reduce((prev, current) => {
                   return prev + item.mapCartToCount[current]

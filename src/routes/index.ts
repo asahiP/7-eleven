@@ -9,6 +9,7 @@ import Markets from '@pages/Markets/Markets'
 import Code from '@pages/Code/Code'
 import Payment from '@pages/Code/Payment'
 import Oder from '@pages/Oder/Oder'
+import Scan from '@pages/Scan/Scan'
 
 const routes: RouteConfig[] = [
   {
@@ -59,6 +60,10 @@ const routes: RouteConfig[] = [
   {
     path: '/oder',
     redirect: '/oder/all'
+  },
+  {
+    path: '/scan',
+    component: Scan
   },
   {
     path: '*',
