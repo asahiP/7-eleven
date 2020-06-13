@@ -246,3 +246,14 @@ export function formatTime (
 
   return format.replace(/YYYY|MM|DD|dd|hh|mm|ss/g, fragment => DateMap[replaceMap[fragment]])
 }
+
+export function parseQueryString (str: string): { [key: string]: string } {
+  return str.includes('?')
+    ? str.split('?')[1].split('&').reduce((prev: { [key: string]: string }, current) => {
+        const [key, val] = current.split('=')
+        prev[key] = val
+
+        return prev
+      }, {})
+    : {}
+}

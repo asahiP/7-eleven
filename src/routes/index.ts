@@ -10,6 +10,7 @@ import Code from '@pages/Code/Code'
 import Payment from '@pages/Code/Payment'
 import Oder from '@pages/Oder/Oder'
 import Scan from '@pages/Scan/Scan'
+import Search from '@pages/Search/Search'
 
 const routes: RouteConfig[] = [
   {
@@ -64,6 +65,10 @@ const routes: RouteConfig[] = [
   {
     path: '/scan',
     component: Scan
+  },
+  {
+    path: '/search',
+    component: Search
   },
   {
     path: '*',
