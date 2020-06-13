@@ -7,6 +7,8 @@ import {
   GENERATE_ORDER
 } from '@/constants'
 
+import fake_avatar from '@public/img/fake_avatar.jpg'
+
 interface State {
   userInfo: UserInfo
   oder: Oder[]
@@ -37,7 +39,7 @@ interface ActionMap {
 const initialState: State = {
   userInfo: {
     name: '京酱肉丝',
-    avatar: require('@public/img/fake_avatar.jpg').default,
+    avatar: fake_avatar,
     location: '上海浦东新区店(NO.1032)',
     time: '08:30',
     description: '这个人很懒，什么也没有留下...',
