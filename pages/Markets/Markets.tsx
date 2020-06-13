@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { useLocation, useHistory, useParams } from 'react-router-dom'
+import { useLocation, useHistory, useParams, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { classNames, shuffle, range, random } from '@/utils'
 
@@ -105,9 +105,11 @@ function connectedMarkets ({ userInfo, cart }: Props) {
               {time}
             </span>
           </div>
-          <span className="common__settings">
-            <span className="common__icon common__icon--search markets__icon"></span>
-          </span>
+          <Link to="/search">
+            <span className="common__settings">
+              <span className="common__icon common__icon--search markets__icon"></span>
+            </span>
+          </Link>
         </div>
         <div className="markets__content common__clear">
           <ScrollView className="markets__content-left" resize={resize}>

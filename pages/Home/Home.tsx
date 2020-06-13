@@ -34,7 +34,9 @@ export default function Home (): JSX.Element {
   return (
     <>
       <Sticky scrollTop={scrollTop}/>
-      <Link to="/" className="home__search-wapper"><span className="common__icon common__icon--search"></span></Link>
+      <Link to="/search" className="home__search-wapper">
+        <span className="common__icon common__icon--search"></span>
+      </Link>
       <div className="home__content-wapper">
         <Products products={fakeProduct.slice(3, 9).reverse()}/>
         <div className="home__content-entry">

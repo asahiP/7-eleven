@@ -82,7 +82,9 @@ export default function Flipping ({
       transition: `transform ${duration}ms ease-out`,
       transform: 'translate3d(0, -50%, 0)'
     }))
-    setTimeout(handleTransitionEnd, duration)
+    const timer = setTimeout(handleTransitionEnd, duration)
+
+    return () => clearTimeout(timer)
   }, [flippingValue])
 
   return (
