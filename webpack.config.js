@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
-const publicPath = '/'
+const publicPath = '/7-eleven'
 
 module.exports = {
   entry: {
