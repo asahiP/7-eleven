@@ -42,12 +42,9 @@ module.exports = {
         use: [
           { loader: 'style-loader' },
           {
-            loader: 'px2vw-view-loader',
-            query: {
-              viewportWidth: 480,
-              viewportUnit: 'vw',
-              minPixelValue: 1,
-              decimal: 3
+            loader: 'px2-loader',
+            options: {
+              datum: 480
             }
           },
           { loader: 'css-loader', options: { importLoaders: 2 } },

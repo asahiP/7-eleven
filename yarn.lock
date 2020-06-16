@@ -4523,6 +4523,11 @@ punycode@^2.1.0:
   resolved "https://registry.npm.taobao.org/punycode/download/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha1-tYsBCsQMIsVldhbI0sLALHv0eew=
 
+px2-loader@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/px2-loader/download/px2-loader-1.0.0.tgz?cache=0&sync_timestamp=1592286790869&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpx2-loader%2Fdownload%2Fpx2-loader-1.0.0.tgz#791de0347c80c8ca6cfa497e2e651fd40317cad2"
+  integrity sha1-eR3gNHyAyMps+kl+LmUf1AMXytI=
+
 px2vw-view-loader@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/px2vw-view-loader/download/px2vw-view-loader-1.0.2.tgz#4d3ca33ced0b2a4ad4928d72414fb09d0405d205"
